@@ -590,6 +590,53 @@
     <div class="grid g3" id="rezGrid"></div>
     <div class="card soft" style="margin-top:26px" id="rezRek"></div>
   </div></section>
+
+  <section class="reveal soft"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Kalkulacja · liczby, nie obietnice</div><h2>Ile to realnie kosztuje i kiedy się zwraca</h2>
+      <p>Sprawdziliśmy ceny bezpośrednio w kalkulatorze Fitssey — to nie są nasze szacunki, tylko ich oficjalne stawki. Poniżej pełna tabela i rachunek, który każdy może sprawdzić na kartce.</p></div>
+    <div class="grid g2">
+      <div class="card">
+        <div class="tag">Koszt systemu</div>
+        <h3 style="margin-bottom:14px">Cennik Fitssey — pełna skala</h3>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:.92rem;font-variant-numeric:tabular-nums">
+            <thead><tr style="border-bottom:2px solid var(--line)">
+              <th style="text-align:left;padding:8px 6px">Rezerwacji / mc</th>
+              <th style="text-align:right;padding:8px 6px">Netto</th>
+              <th style="text-align:right;padding:8px 6px">Brutto</th></tr></thead>
+            <tbody id="fitTbl"></tbody>
+          </table>
+        </div>
+        <p style="font-size:.86rem;color:var(--muted);margin-top:12px">Do 50 rezerwacji miesięcznie — bezpłatnie. Brutto = netto + 23% VAT. Bez umowy, wypowiedzenie mailem.</p>
+      </div>
+      <div class="card" style="border-top:4px solid var(--gold)">
+        <div class="tag gold">Rachunek zwrotu</div>
+        <h3 style="margin-bottom:14px">Kiedy system się spłaca</h3>
+        <div id="roi"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:22px;border-left:4px solid var(--sage)">
+      <h3 style="font-size:1.2rem">Porównanie kosztu przy Waszej skali (ok. 800 rezerwacji miesięcznie)</h3>
+      <div class="grid g3" style="margin-top:16px">
+        <div style="text-align:center;padding:16px;background:var(--sage-tint);border-radius:12px">
+          <div style="font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em">Fitssey</div>
+          <div style="font-family:var(--serif);font-size:2rem;color:var(--sage-d);margin:6px 0">150 zł</div>
+          <div style="font-size:.84rem;color:var(--muted)">brutto / mc · bez umowy</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:var(--sand);border-radius:12px">
+          <div style="font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em">eFitness</div>
+          <div style="font-family:var(--serif);font-size:2rem;color:var(--clay);margin:6px 0">306 zł</div>
+          <div style="font-size:.84rem;color:var(--muted)">brutto / mc · umowa 24 mc</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:var(--sand);border-radius:12px">
+          <div style="font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em">Momence</div>
+          <div style="font-family:var(--serif);font-size:2rem;color:var(--muted);margin:6px 0">?</div>
+          <div style="font-size:.84rem;color:var(--muted)">brak potwierdzenia PLN/BLIK</div>
+        </div>
+      </div>
+      <p style="margin-top:16px;font-size:.95rem"><b>Fitssey kosztuje mniej niż jeden karnet miesięczny</b> (270 zł) — i jest dwukrotnie tańszy od eFitness, bez zobowiązania na dwa lata.</p>
+    </div>
+  </div></section>
   <section class="reveal"><div class="wrap"><div class="band">
     <h2>Porozmawiajmy o rozwoju szkoły</h2>
     <p>Mamy gotowy moduł wiedzy, biznesplan i mapę produktów. Zróbmy następny krok razem — spokojnie, w duchu jogi.</p>
@@ -864,7 +911,7 @@ const STEPS=[
 const REZ=[
  {tag:`Rekomendacja #1`,t:`Fitssey`,cena:`Model „płacisz za to, czego używasz”: <b>do 50 rezerwacji miesięcznie za darmo</b>. Dalej: 101–150 rezerwacji ≈ 60 zł, 151–200 ≈ 64 zł (netto). <b>Bez umowy</b> — wypowiedzenie mailem.`,
   plus:[`Polski system z <b>dedykowanym produktem dla szkół jogi</b> — nie przerobiona siłownia`,`Płatności natywnie w złotówkach: <b>BLIK, karty, Apple/Google Pay</b>`,`<b>Lista rezerwowa</b> z automatycznym awansem, gdy ktoś odwoła`,`Kaucje przeciw nieobecnościom, auto-odwoływanie zajęć przy zbyt małej frekwencji`,`Karnety, wejściówki, członkostwa cykliczne, <b>warsztaty i wyjazdy</b>`,`Aplikacja mobilna dla klientów, newsletter, SMS i push — w cenie`,`Realnie używany przez polskie studia jogi`],
-  minus:[`Publiczny cennik kończy się na 200 rezerwacjach. Przy Waszej skali (7 nauczycieli) będzie ich <b>znacznie więcej</b> — <b>tej ceny nie ustaliliśmy</b>. Szacunek: rząd 100–200 zł netto, ale to nasza estymacja, nie oficjalne źródło. To pytanie nr 1 do nich.`],
+  minus:[`Cena rośnie z liczbą rezerwacji — ale bardzo łagodnie. Przy Waszej realnej skali (ok. 800 rezerwacji miesięcznie) to <b>122 zł netto / 150 zł brutto</b>. Sprawdziliśmy w ich kalkulatorze — pełna tabela niżej.`],
   dla:`Wybór domyślny. Jedyny system z udokumentowanym profilem szkoły jogi w Polsce i żywymi referencjami z branży. Model per-rezerwacja pasuje do kameralnego studia: przy pustym miesiącu płacicie zero. Wdrożenie: 1–2 tygodnie, konto zakłada się w kilkadziesiąt sekund.`},
  {tag:`Alternatywa`,t:`eFitness`,cena:`Plan Studio: <b>249 zł netto/mc</b> (lub 149 zł netto/mc przy płatności rocznej z góry) + 100 zł aktywacji. Wyższe plany od 300 zł, a integracja z kartami sportowymi dopiero od ok. 700 zł/mc.`,
   plus:[`Polska firma <b>z Poznania</b> — opiekun wdrożenia, umowa, wsparcie na miejscu`,`Fakturowanie zgodne z KSeF „z pudełka”`,`CRM, automatyzacja e-mail i SMS, moduł windykacji, API`],
@@ -1122,6 +1169,25 @@ document.getElementById('audio').innerHTML=AUDIO.map((x,i)=>`<div class="card ho
 document.getElementById('steps').innerHTML=STEPS.map(([n,t,d])=>`<div class="step"><div class="n">${n}</div><div><h3>${t}</h3><p>${d}</p></div></div>`).join('');
 document.getElementById('rezGrid').innerHTML=REZ.map(r=>`<div class="card" style="border-top:4px solid var(--sage);display:flex;flex-direction:column"><div class="tag">${r.tag}</div><h3 style="font-size:1.4rem">${r.t}</h3><p style="margin:10px 0 14px;color:var(--ink)">${r.cena}</p><div style="font-size:.88rem"><b style="color:var(--sage-d)">Za:</b><ul style="margin:6px 0 12px 18px;color:var(--muted)">${r.plus.map(p=>`<li style="margin-bottom:4px">${p}</li>`).join('')}</ul><b style="color:var(--clay)">Przeciw / niewiadome:</b><ul style="margin:6px 0 12px 18px;color:var(--muted)">${r.minus.map(p=>`<li style="margin-bottom:4px">${p}</li>`).join('')}</ul></div><p style="font-size:.9rem;margin-top:auto;padding-top:10px;border-top:1px solid var(--line)">${r.dla}</p></div>`).join('');
 document.getElementById('rezRek').innerHTML=REZREK;
+
+/* Kalkulacja — ceny z kalkulatora Fitssey (netto), brutto = +23% VAT */
+const FIT=[[`do 50`,0],[`101–150`,59.62],[`251–300`,74.65],[`401–450`,86.47],[`551–600`,99.70],[`701–750`,116.42],[`751–800`,122.00],[`851–900`,132.92],[`951–1000`,143.84],[`1101–1200`,169.88]];
+const zl=n=>n.toFixed(2).replace('.',',')+' zł';
+document.getElementById('fitTbl').innerHTML=FIT.map(([r,n])=>{
+  const hi=r===`751–800`;
+  return `<tr style="border-bottom:1px solid var(--line);${hi?'background:var(--sage-tint);font-weight:700':''}">
+    <td style="padding:8px 6px">${r}${hi?' &nbsp;← Wasza skala':''}</td>
+    <td style="text-align:right;padding:8px 6px">${n===0?'bezpłatnie':zl(n)}</td>
+    <td style="text-align:right;padding:8px 6px">${n===0?'—':zl(n*1.23)}</td></tr>`;}).join('');
+
+const ROI=[
+ [`Koszt systemu`,`ok. <b>150 zł brutto</b> miesięcznie przy 800 rezerwacjach.`],
+ [`Zwrot 1 — nieobecności`,`Kaucja przeciw no-show sprawia, że zwolnione miejsce wraca na listę rezerwową i ktoś je zajmuje. <b>Jedna odzyskana wejściówka (50 zł) miesięcznie pokrywa jedną trzecią kosztu.</b> Trzy — cały system.`],
+ [`Zwrot 2 — miejsce gwarantowane`,`Abonament premium z gwarancją miejsca na najpopularniejszych zajęciach (+40 zł/mc). <b>Czterech chętnych = system zarabia na siebie z nawiązką.</b>`],
+ [`Zwrot 3 — grafik oparty na danych`,`Po miesiącu widzicie, które pasma są puste. Przeniesienie jednych zajęć w lepszą godzinę potrafi zmienić frekwencję z trzech osób na dwanaście — <b>to sam zysk, bez żadnego kosztu.</b>`],
+ [`Zwrot 4 — sprzedaż online`,`Karnety kupowane BLIK-iem o dowolnej porze, a nie tylko na recepcji w godzinach otwarcia. Każdy karnet, którego ktoś nie kupił, bo „zapomniał portfela”, to strata, której dziś nawet nie widzicie.`],
+];
+document.getElementById('roi').innerHTML=ROI.map(([t,d])=>`<div style="padding:12px 0;border-bottom:1px solid var(--line)"><div style="font-weight:700;color:var(--sage-d);font-size:.95rem;margin-bottom:4px">${t}</div><p style="font-size:.92rem;color:var(--muted)">${d}</p></div>`).join('')+`<p style="margin-top:14px;font-weight:600">Próg opłacalności: <b style="color:var(--gold)">trzy odzyskane wejściówki miesięcznie.</b> Wszystko powyżej to czysty zysk.</p>`;
 document.getElementById('ebooks').innerHTML=EBOOKS.map((e,i)=>`<div class="ebook" onclick="openEbook(${i})"><div class="num">EBOOK ${String(i+1).padStart(2,'0')} · <span style="color:var(--sage-d)">${EPRICE[i]}</span></div><h3>${e[0]}</h3><div class="aut">✍️ ${e[1]}</div><div class="peek">Zobacz spis treści →</div></div>`).join('');
 document.getElementById('shop').innerHTML=SHOP.map(([img,n,cat,d,pr])=>`<div class="prod"><div class="img" style="padding:0"><img src="zdjecia/produkty/${img}" alt="${n}" style="width:100%;height:100%;object-fit:cover"></div><div class="b"><div class="tag">${cat}</div><h3>${n}</h3><div class="desc">${d}</div><div class="row"><span class="price">${pr}</span><button onclick="tab('kontakt')">Zapytaj</button></div></div></div>`).join('');
 

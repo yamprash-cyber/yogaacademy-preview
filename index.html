@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yoga Academy Poznań — Centrum Świadomego Ruchu</title>
+<style>
+  :root{
+    --bg:#faf8f4; --panel:#ffffff; --ink:#3d3a35; --muted:#8a8275;
+    --sage:#9cb094; --sage-d:#7a9070; --sage-tint:#f0f4ec; --sand:#f5efe6; --clay:#d9a98f; --gold:#c9ab79;
+    --rose:#e8d5cc; --lav:#e3dded;
+    --line:#ece7db; --maxw:1200px; --r:18px;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#171812;--panel:#1e2018;--ink:#eef0e4;--muted:#a8a08d;--sage:#a9bb9c;--sage-d:#93a884;
+      --sage-tint:#20241b;--sand:#232017;--clay:#d9a98f;--gold:#d3b478;--rose:#4a3c36;--lav:#37334a;--line:#2c2f23;}
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.68;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.13;letter-spacing:-.01em}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  a{color:inherit}img{max-width:100%;display:block}
+  .eyebrow{font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;color:var(--sage-d);font-weight:700;font-family:var(--sans)}
+  .btn{display:inline-block;padding:14px 28px;border-radius:100px;font-weight:600;text-decoration:none;cursor:pointer;border:none;font-size:.95rem;transition:.2s;font-family:var(--sans)}
+  .btn-primary{background:var(--sage);color:#fff;box-shadow:0 8px 24px -12px var(--sage)}
+  .btn-primary:hover{background:var(--sage-d);transform:translateY(-2px)}
+  .btn-ghost{border:1.5px solid var(--line);color:var(--ink);background:transparent}
+  .btn-ghost:hover{border-color:var(--sage);color:var(--sage-d)}
+  .btn-light{background:#fff;color:var(--sage-d)}
+  .btn-gold{background:var(--gold);color:#fff}
+  /* NAV */
+  nav{position:sticky;top:0;z-index:60;backdrop-filter:blur(16px);background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;gap:16px;height:72px}
+  .brand{display:flex;align-items:center;gap:10px;cursor:pointer}
+  .brand img{width:34px;height:34px}
+  .brand span{font-family:var(--serif);font-weight:700;font-size:1.28rem;letter-spacing:-.02em}
+  .brand span em{color:var(--sage-d);font-style:normal}
+  .tabs{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+  .tabs button{background:none;border:none;font:inherit;font-size:.9rem;color:var(--muted);padding:8px 12px;border-radius:100px;cursor:pointer;transition:.15s}
+  .tabs button:hover{color:var(--ink);background:var(--sage-tint)}
+  .tabs button.active{color:var(--sage-d);font-weight:700;background:var(--sage-tint)}
+  @media(max-width:960px){nav .wrap{height:auto;padding:10px 20px;flex-wrap:wrap}.tabs{margin-left:0;width:100%}}
+  /* PANEL */
+  .panel{display:none}.panel.active{display:block}
+  section{padding:70px 0}
+  .sec-head{max-width:64ch;margin-bottom:38px}
+  .sec-head h2{font-size:clamp(1.9rem,4vw,2.9rem);margin:10px 0}
+  .sec-head p{color:var(--muted);font-size:1.08rem}
+  .lead{color:var(--muted);font-size:1.12rem;max-width:60ch}
+  /* REVEAL animacja */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+  /* HERO z tłem + kenburns */
+  .hero{position:relative;min-height:88vh;display:flex;align-items:center;color:#fff;overflow:hidden}
+  .hero .bgwrap{position:absolute;inset:0;z-index:0;overflow:hidden}
+  .hero .bgwrap img{width:100%;height:100%;object-fit:cover;animation:kenburns 26s ease-in-out infinite alternate}
+  .hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(120deg,rgba(40,44,30,.72),rgba(40,44,30,.30) 60%,rgba(40,44,30,.55))}
+  @keyframes kenburns{from{transform:scale(1) translate(0,0)}to{transform:scale(1.1) translate(-2%,-2%)}}
+  .hero .wrap{position:relative;z-index:2;padding:60px 24px}
+  .hero .eyebrow{color:#e7ddb9}
+  .hero h1{font-size:clamp(2.6rem,6.4vw,5rem);max-width:17ch;color:#fff;text-shadow:0 2px 30px rgba(0,0,0,.25)}
+  .hero .lead{color:rgba(255,255,255,.92);font-size:1.3rem;margin:22px 0 30px;max-width:56ch}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hero .trust{display:flex;flex-wrap:wrap;gap:22px;margin-top:40px;font-size:.9rem;color:rgba(255,255,255,.85)}
+  .hero .trust b{color:#fff}
+  /* PARALLAX band */
+  .para{position:relative;color:#fff;padding:96px 0;background-size:cover;background-position:center;background-attachment:fixed}
+  .para::before{content:"";position:absolute;inset:0;background:rgba(45,48,32,.6)}
+  .para .wrap{position:relative}
+  .para h2{color:#fff;font-size:clamp(1.8rem,4vw,2.7rem);max-width:20ch}
+  .para p{color:rgba(255,255,255,.9);max-width:56ch;margin-top:14px}
+  @media(max-width:820px){.para{background-attachment:scroll}}
+  /* GRID */
+  .grid{display:grid;gap:20px}
+  .g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:960px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:26px;transition:.2s}
+  .card h3{font-size:1.2rem;margin-bottom:8px}.card p{color:var(--muted);font-size:.95rem}
+  .tag{display:inline-block;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sage-d);font-weight:700;margin-bottom:6px}
+  .tag.gold{color:var(--gold)}.tag.clay{color:var(--clay)}
+  .hoverable{cursor:pointer}
+  .hoverable:hover{transform:translateY(-4px);box-shadow:0 20px 44px -28px rgba(80,70,40,.5);border-color:var(--sage)}
+  .soft{background:var(--sand)}
+  /* GALERIA strip */
+  .gallery{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+  .gallery img{width:100%;height:150px;object-fit:cover;border-radius:12px;transition:.35s;filter:saturate(.96)}
+  .gallery img:hover{transform:scale(1.03);filter:saturate(1.05)}
+  @media(max-width:900px){.gallery{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:520px){.gallery{grid-template-columns:repeat(2,1fr)}}
+  /* TEAM */
+  .team-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:.2s}
+  .team-card:hover{transform:translateY(-6px);box-shadow:0 26px 48px -26px rgba(80,70,40,.5)}
+  .team-card .ph{aspect-ratio:3/3.5;overflow:hidden;background:var(--sand)}
+  .team-card .ph img{width:100%;height:100%;object-fit:cover;transition:.5s}
+  .team-card:hover .ph img{transform:scale(1.05)}
+  .team-card .b{padding:18px 20px}
+  .team-card h3{font-size:1.14rem}
+  .team-card .role{color:var(--sage-d);font-size:.82rem;font-weight:600;margin:3px 0 8px;font-family:var(--sans)}
+  .team-card .intro{font-size:.86rem;color:var(--muted)}
+  /* MODAL */
+  .modal-bg{position:fixed;inset:0;background:rgba(30,28,18,.6);backdrop-filter:blur(5px);z-index:100;display:none;align-items:flex-start;justify-content:center;padding:40px 16px;overflow:auto}
+  .modal-bg.open{display:flex}
+  .modal{background:var(--bg);border-radius:22px;max-width:780px;width:100%;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.5)}
+  .modal .head{display:flex;gap:22px;padding:28px 30px;background:var(--sage-tint);align-items:center}
+  .modal .head img{width:118px;height:140px;object-fit:cover;border-radius:14px;flex:none}
+  .modal .head h2{font-size:1.75rem}
+  .modal .head .role{color:var(--sage-d);font-weight:600;margin-top:4px;font-family:var(--sans)}
+  .modal .body{padding:26px 30px}
+  .modal .body p{color:var(--ink);margin-bottom:13px}
+  .modal .body h4{margin:18px 0 8px;font-size:1.05rem}
+  .modal ul{margin:0 0 14px 18px;color:var(--muted)}.modal ul li{margin-bottom:6px}
+  .modal .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+  .modal .links a{font-size:.85rem;padding:8px 14px;border-radius:100px;background:var(--panel);border:1px solid var(--line);text-decoration:none}
+  .modal .links a:hover{border-color:var(--sage);color:var(--sage-d)}
+  .modal .close{float:right;margin:14px 14px -42px auto;background:var(--panel);border:1px solid var(--line);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1.1rem;color:var(--ink);position:relative;z-index:3}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+  .chip{font-size:.72rem;background:var(--panel);border:1px solid var(--line);padding:4px 10px;border-radius:100px;color:var(--muted)}
+  /* EBOOK */
+  .ebook{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;cursor:pointer;display:flex;flex-direction:column;gap:8px;transition:.2s;border-left:4px solid var(--gold)}
+  .ebook:hover{transform:translateY(-3px);box-shadow:0 16px 34px -24px rgba(80,70,40,.5)}
+  .ebook .num{font-size:.72rem;color:var(--gold);font-weight:700}
+  .ebook h3{font-size:1.05rem;line-height:1.28}.ebook .aut{font-size:.82rem;color:var(--muted)}
+  .ebook .peek{font-size:.8rem;color:var(--sage-d);font-weight:600;margin-top:auto}
+  /* SHOP */
+  .shop-note{background:var(--sand);border:1px dashed var(--gold);border-radius:14px;padding:16px 20px;font-size:.9rem;color:var(--muted);margin-bottom:26px}
+  .prod{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+  .prod:hover{transform:translateY(-4px);box-shadow:0 18px 38px -26px rgba(80,70,40,.5)}
+  .prod .img{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:3rem;background:var(--sage-tint)}
+  .prod .b{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .prod h3{font-size:1.02rem}.prod .desc{font-size:.84rem;color:var(--muted);flex:1}
+  .prod .row{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+  .prod .price{font-weight:700;font-size:1.05rem;font-family:var(--serif)}
+  .prod button{font-size:.82rem;padding:8px 14px;border-radius:100px;border:1px solid var(--sage);color:var(--sage-d);background:transparent;cursor:pointer}
+  .prod button:hover{background:var(--sage);color:#fff}
+  /* SIGNATURE */
+  .sig{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:24px;border-top:4px solid var(--sage)}
+  .sig .code{font-family:var(--serif);font-size:1.4rem;color:var(--sage-d)}
+  .sig h3{font-size:1.15rem;margin:6px 0}
+  .sig .who{font-size:.76rem;color:var(--clay);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+  .sig p{font-size:.9rem;color:var(--muted);margin-top:8px}
+  /* STEPS */
+  .step{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid var(--line)}
+  .step .n{font-family:var(--serif);font-size:2.1rem;color:var(--sage);flex:none;width:58px}
+  .step h3{font-size:1.15rem}.step p{color:var(--muted);font-size:.95rem;margin-top:4px}
+  /* PRICING */
+  .ptable{display:grid;gap:26px}
+  .pblock h3{font-size:1.15rem;margin-bottom:14px;color:var(--sage-d)}
+  .prows{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media(max-width:820px){.prows{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.prows{grid-template-columns:1fr}}
+  .prow{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;text-align:center}
+  .prow.hi{border-color:var(--gold)}
+  .prow .amt{font-family:var(--serif);font-size:1.5rem;margin:4px 0}
+  .prow small{color:var(--muted);display:block;font-size:.8rem}
+  /* BAND */
+  .band{background:var(--sage);color:#fff;border-radius:26px;padding:56px;text-align:center}
+  .band h2{color:#fff;font-size:clamp(1.8rem,4vw,2.6rem)}
+  .band p{color:rgba(255,255,255,.92);max-width:52ch;margin:14px auto 24px}
+  .band .btn{background:#fff;color:var(--sage-d)}
+  /* FOOTER */
+  footer{padding:56px 0 40px;border-top:1px solid var(--line);background:var(--panel);color:var(--muted);font-size:.92rem}
+  footer .cols{display:flex;flex-wrap:wrap;gap:38px;justify-content:space-between}
+  footer b{color:var(--ink);display:block;margin-bottom:8px;font-family:var(--serif)}
+  footer a{color:var(--muted);text-decoration:none;display:block;margin:5px 0}
+  footer a:hover{color:var(--sage-d)}
+  .soc a{display:inline-block;margin:0 12px 0 0;font-size:1.5rem}
+  /* === ANIMACJE ATV === */
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--sage),var(--gold));z-index:99;transition:width .15s linear}
+  nav{transition:box-shadow .3s, padding .3s}
+  nav.shrunk{box-shadow:0 6px 24px -14px rgba(80,70,40,.35)}
+  nav.shrunk .wrap{height:56px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center}
+  @media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat .n{font-family:var(--serif);font-size:2.6rem;color:var(--sage-d)}
+  .stat .l{font-size:.82rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+  .sig{position:relative;overflow:hidden}
+  .sig::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-18deg);transition:none}
+  .sig:hover::after{left:130%;transition:left .7s ease}
+  .gallery img{cursor:zoom-in}
+  .lb{position:fixed;inset:0;background:rgba(25,24,18,.88);z-index:120;display:none;align-items:center;justify-content:center;padding:30px;cursor:zoom-out}
+  .lb.open{display:flex}
+  .lb img{max-width:92vw;max-height:88vh;border-radius:14px;box-shadow:0 40px 90px rgba(0,0,0,.5);animation:lbin .3s ease}
+  @keyframes lbin{from{transform:scale(.94);opacity:0}to{transform:none;opacity:1}}
+  .fut{background:linear-gradient(150deg,var(--lav),var(--sage-tint));border:1px solid var(--line);border-radius:var(--r);padding:24px}
+  .fut h3{font-size:1.12rem;margin:6px 0}
+  .fut p{font-size:.9rem;color:var(--muted)}
+  @media (prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}.hero .bgwrap img{animation:none}.sig::after{display:none}}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<nav><div class="wrap">
+  <div class="brand" onclick="tab('start')"><img src="logo_yoga-academy.svg" alt="logo"><span>yoga<em>Academy</em></span></div>
+  <div class="tabs" id="tabs"></div>
+</div></nav>
+
+<!-- ===== START ===== -->
+<div class="panel active" id="start">
+  <header class="hero">
+    <div class="bgwrap"><img src="zdjecia/stock/stock_hero.jpg" alt=""></div>
+    <div class="wrap">
+      <div class="eyebrow">Poznań · Święty Marcin 31 · od 2018</div>
+      <h1>Tam, gdzie joga spotyka fizjoterapię, neuronaukę i sztukę.</h1>
+      <p class="lead">Kameralna szkoła jogi i centrum świadomego ruchu w sercu Poznania. Nie uczymy tylko pozycji — uczymy Twoje ciało i układ nerwowy wracać do równowagi, bezpiecznie i z uwagą, także jeśli zaczynasz od zera.</p>
+      <div class="cta">
+        <a class="btn btn-primary" onclick="tab('zajecia')">Zobacz zajęcia i grafik</a>
+        <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.5)" onclick="tab('zespol')">Poznaj zespół</a>
+      </div>
+      <div class="trust">
+        <div>🕉️ <b>Ashtanga</b> — autoryzacja KPJAYI Mysore</div>
+        <div>🎓 Kursy <b>Yoga Alliance</b> 200h / 300h</div>
+        <div>🩺 <b>Fizjoterapia</b> i Rolfing pod jednym dachem</div>
+      </div>
+    </div>
+  </header>
+
+  <section class="reveal"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Dlaczego my</div><h2>Jedno centrum — pięć światów praktyki</h2>
+      <p>Ten sam zespół prowadzi Cię od pierwszej pozycji, przez pracę z bólem i stresem, aż po ścieżkę nauczycielską. To rzadka głębia jak na jedną szkołę — i właśnie ona sprawia, że warto tu zostać na lata.</p></div>
+    <div class="grid g4">
+      <div class="card hoverable" onclick="tab('zajecia')"><div class="tag">Ciało</div><h3>Ruch bez bólu</h3><p>Joga łączona z wiedzą fizjoterapeutyczną, mobilnością i pilatesem.</p></div>
+      <div class="card hoverable" onclick="tab('wiedza')"><div class="tag">Umysł</div><h3>Regulacja i uważność</h3><p>Medytacja, oddech i mindfulness (MBSR) oparte na neuronauce.</p></div>
+      <div class="card hoverable" onclick="tab('zespol')"><div class="tag">Tradycja</div><h3>Prosto z Mysore</h3><p>Ashtanga w autoryzowanej linii Pattabhiego i Sharatha Joisa.</p></div>
+      <div class="card hoverable" onclick="tab('mozliwosci')"><div class="tag gold">Sztuka</div><h3>Joga + muzyka na żywo</h3><p>Wieczory z fortepianem, dźwiękiem i głęboką regeneracją.</p></div>
+    </div>
+  </div></section>
+
+  <div class="para reveal" style="background-image:url('zdjecia/stock/stock_nature.jpg')"><div class="wrap">
+    <div class="eyebrow" style="color:#e7ddb9">Nasza filozofia</div>
+    <h2>Joga dostępna dla każdego ciała</h2>
+    <p>Wierzymy, że wszyscy ludzie są równi w prawie do szacunku. Uczymy uważnej obserwacji ciała i całościowego podejścia do człowieka — praktyki, która wspiera zarówno ciało, jak i umysł, jako integralna część zdrowego życia.</p>
+  </div></div>
+
+  <section class="reveal soft"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Ścieżki</div><h2>Znajdź swoją drogę</h2>
+      <p>Nie musisz być rozciągnięty ani mieć doświadczenia. Wskażemy Ci ścieżkę dopasowaną do ciała i celu.</p></div>
+    <div class="grid g4">
+      <div class="card"><div class="tag">01</div><h3>Pierwsza joga w życiu</h3><p>Łagodny, bezpieczny start dla początkujących — bez presji i porównań.</p></div>
+      <div class="card"><div class="tag">02</div><h3>Ruch bez bólu</h3><p>Joga + fizjoterapia + Rolfing dla osób z napięciami i po urazach.</p></div>
+      <div class="card"><div class="tag">03</div><h3>Pogłębianie praktyki</h3><p>Ashtanga, mobilność, wygięcia i inwersje dla praktykujących.</p></div>
+      <div class="card"><div class="tag">04</div><h3>Zostań nauczycielem</h3><p>Kursy 200h / 300h akredytowane przez Yoga Alliance.</p></div>
+    </div>
+  </div></section>
+
+  <section class="reveal soft"><div class="wrap">
+    <div class="stats">
+      <div class="stat"><div class="n" data-n="2018">0</div><div class="l">w Poznaniu od</div></div>
+      <div class="stat"><div class="n" data-n="7">0</div><div class="l">ekspertów w zespole</div></div>
+      <div class="stat"><div class="n" data-n="11">0</div><div class="l">stylów zajęć</div></div>
+      <div class="stat"><div class="n" data-n="500">0</div><div class="l">godzin kursów TTC</div></div>
+    </div>
+  </div></section>
+
+  <section class="reveal"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Nasza przestrzeń</div><h2>Piękna kamienica w centrum</h2></div>
+    <div class="gallery" id="gallery"></div>
+  </div></section>
+
+  <section class="reveal"><div class="wrap"><div class="band">
+    <h2>Zacznij swoją praktykę</h2>
+    <p>Zadzwoń lub napisz — pomożemy dobrać zajęcia i karnet do Twoich potrzeb i możliwości.</p>
+    <a class="btn" href="tel:+48505904825">Zadzwoń: 505 904 825</a>
+  </div></div></section>
+</div>
+
+<!-- ===== ZAJECIA ===== -->
+<div class="panel" id="zajecia">
+  <section class="reveal"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Grafik i style</div><h2>Zajęcia</h2>
+      <p>Różne nurty i poziomy — każdy prowadzący oferuje modyfikacje pozycji, byś praktykował z szacunkiem do swojego ciała.</p></div>
+    <div class="grid g3" id="classes"></div>
+  </div></section>
+  <section class="reveal soft"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Cennik</div><h2>Karnety i ceny</h2>
+      <p>Płatność na miejscu w szkole: gotówka, karta lub BLIK.</p></div>
+    <div class="ptable">
+      <div class="pblock"><h3>Karnety z limitem wejść</h3><div class="prows">
+        <div class="prow"><small>1 miesiąc · 4 wejścia</small><div class="amt">150 zł</div><small>37,5 zł / zajęcia</small></div>
+        <div class="prow"><small>1 miesiąc · 8 wejść</small><div class="amt">240 zł</div><small>30 zł / zajęcia</small></div>
+        <div class="prow"><small>3 miesiące · 12 wejść</small><div class="amt">350 zł</div><small>29,1 zł / zajęcia</small></div>
+        <div class="prow"><small>6 miesięcy · 24 wejścia</small><div class="amt">670 zł</div><small>27,9 zł / zajęcia</small></div>
+      </div></div>
+      <div class="pblock"><h3>Karnety OPEN — bez limitu wejść</h3><div class="prows">
+        <div class="prow"><small>1 miesiąc · do 12:00</small><div class="amt">220 zł</div><small>zajęcia poranne</small></div>
+        <div class="prow hi"><small>1 miesiąc · OPEN</small><div class="amt">270 zł</div><small>bez ograniczeń</small></div>
+        <div class="prow"><small>3 miesiące · OPEN</small><div class="amt">700 zł</div><small>bez ograniczeń</small></div>
+        <div class="prow"><small>6 miesięcy · OPEN</small><div class="amt">1370 zł</div><small>bez ograniczeń</small></div>
+      </div></div>
+      <div class="pblock"><h3>Pozostałe</h3><div class="prows">
+        <div class="prow"><small>Jednorazowe wejście</small><div class="amt">50 zł</div><small>student 40 zł</small></div>
+        <div class="prow"><small>Zajęcia indywidualne</small><div class="amt">200 zł</div><small>1 osoba</small></div>
+        <div class="prow"><small>Rolfing / fizjoterapia</small><div class="amt">250 zł</div><small>230 zł z karnetem</small></div>
+        <div class="prow"><small>Karta wstępu (kaucja)</small><div class="amt">10 zł</div><small>zwrotna</small></div>
+      </div></div>
+    </div>
+    <p style="margin-top:18px;color:var(--muted);font-size:.9rem">Zniżki: emeryci i renciści 10% (karnety), studenci — wejście jednorazowe 40 zł. Nie honorujemy kart firm pośredniczących (Multisport, FitProfit) — stawiamy na kameralną, świadomą praktykę.</p>
+  </div></section>
+</div>
+
+<!-- ===== ZESPOL ===== -->
+<div class="panel" id="zespol">
+  <section class="reveal"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Ludzie z pasją</div><h2>Nasz zespół — kliknij, by poznać całą historię</h2>
+      <p>Nasz zespół tworzą osoby z pasją, o różnorodnych doświadczeniach, które łączy zbliżone, uważne postrzeganie świata. Siedem osób, siedem różnych światów: fizjoterapia, neuronauka, sztuka, muzyka, mindfulness i tradycja Mysore. To właśnie <b>połączenie tych kompetencji</b> — obok indywidualnego podejścia każdej z osób — jest sercem Yoga Academy.</p></div>
+    <div class="grid g4" id="team"></div>
+  </div></section>
+  <div class="para reveal" style="background-image:url('zdjecia/stock/stock_meditate.jpg')"><div class="wrap">
+    <div class="eyebrow" style="color:#e7ddb9">Efekt synergii</div>
+    <h2>Suma większa niż jej części</h2>
+    <p>Gdy fizjoterapeuta-Rolfer, antropolożka-neuronaukowczyni, dziennikarka z domkami w lesie, pianistka koncertowa i nauczycielka mindfulness spotykają się w jednym miejscu, powstają doświadczenia, których nie odtworzy żadne inne studio w Poznaniu.</p>
+    <a class="btn btn-light" style="margin-top:22px" onclick="tab('mozliwosci')">Zobacz, co z tego tworzymy →</a>
+  </div></div>
+</div>
+
+<!-- ===== WIEDZA ===== -->
+<div class="panel" id="wiedza">
+  <section class="reveal"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Baza wiedzy</div><h2>Wiedza</h2>
+      <p>Uczymy językiem nauki, nie ezoteryki. Poniżej fundamenty naszego podejścia — więcej znajdziesz w naszych ebookach, na podcaście i kanale YouTube.</p></div>
+    <div class="grid g3" id="wiedzaCards"></div>
+  </div></section>
+  <section class="reveal soft"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Więcej treści</div><h2>Ucz się z nami także online</h2></div>
+    <div class="grid g4">
+      <a class="card hoverable" href="https://www.youtube.com/channel/UCD1ZmXG_pSVzTpLzvfD0ThA" target="_blank"><div class="tag clay">YouTube</div><h3>Kanał wideo</h3><p>Praktyki, asany i relacje z kursów.</p></a>
+      <a class="card hoverable" href="https://www.instagram.com/yogaacademypoznan/" target="_blank"><div class="tag">Instagram</div><h3>@yogaacademypoznan</h3><p>Codzienne życie szkoły i społeczność.</p></a>
+      <a class="card hoverable" href="https://www.facebook.com/yogaacademypoznan" target="_blank"><div class="tag">Facebook</div><h3>Wydarzenia</h3><p>Warsztaty, wyjazdy i kursy.</p></a>
+      <a class="card hoverable" onclick="tab('ebooki')"><div class="tag gold">Ebooki</div><h3>20 przewodników</h3><p>Pogłębione materiały — od pierwszej praktyki po układ nerwowy.</p></a>
+    </div>
+  </div></section>
+</div>
+
+<!-- ===== EBOOKI ===== -->
+<div class="panel" id="ebooki">
+  <section class="reveal"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Biblioteka · 20 tytułów</div><h2>Ebooki — kliknij, by zobaczyć spis treści</h2>
+      <p>Przewodniki głębsze niż u konkurencji — każdy pisany przez osobę z zespołu w jej dziedzinie. Produkt cyfrowy: edukuje, buduje autorytet i jest pasywnym źródłem przychodu.</p></div>
+    <div class="grid g3" id="ebooks"></div>
+  </div></section>
+</div>
+
+<!-- ===== SKLEP ===== -->
+<div class="panel" id="sklep">
+  <section class="reveal"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Sklep</div><h2>Sklep Yoga Academy</h2>
+      <p>Bezpieczny, spójny z klimatem asortyment: akcesoria, odzież eco, vouchery oraz produkty cyfrowe.</p></div>
+    <div class="shop-note">🛈 <b>To makieta-propozycja.</b> Sklep prezentuje przykładowe towary i ceny — celowo bez koszyka i płatności online. To gotowa koncepcja do wdrożenia, gdy zdecydujecie się uruchomić sprzedaż.</div>
+    <div class="grid g4" id="shop"></div>
+  </div></section>
+</div>
+
+<!-- ===== MOZLIWOSCI ===== -->
+<div class="panel" id="mozliwosci">
+  <section class="reveal"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Strategia rozwoju</div><h2>Co odkryliśmy — i co możecie z tym zrobić</h2>
+      <p>Yoga Academy to nie „kolejna szkoła jogi”, lecz jedyne w Poznaniu miejsce, gdzie joga spotyka fizjoterapię, neuronaukę i sztukę. Największy, dziś niesprzedawany kapitał to <b>7 osób = 5 warstw biznesu pod jednym dachem</b>. Kierunek: sprzedawać <b>regulację</b> (stresu, bólu, uwagi, snu), a nie same wejściówki — wyższa półka bez utraty kameralnego klimatu.</p></div>
+    <div class="card soft" style="margin-bottom:34px">
+      <div class="tag gold">Koronny ruch</div>
+      <h3 style="font-size:1.4rem">Autorska metoda „joga + fizjoterapia” jako marka (IP)</h3>
+      <p style="margin-top:8px;color:var(--muted)">Skodyfikować unikalne podejście szkoły w nazwaną <b>Metodę Świadomego Ruchu</b>, firmowaną przez Rolfera-fizjoterapeutę i nauczycielkę o zapleczu neuronaukowym. To staje się licencjonowalnym know-how, niekopiowalnym lokalnie — fundament pozycjonowania premium.</p>
+    </div>
+    <div class="sec-head"><div class="eyebrow">Produkty z połączenia zdolności zespołu</div><h2>10 pomysłów sygnaturowych</h2>
+      <p>Każdy to kombinacja min. dwóch osób — trudna do skopiowania, wyższa marża niż karnet.</p></div>
+    <div class="grid g3" id="sigs"></div>
+  </div></section>
+  <section class="reveal soft"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Produkty z duszą — kameralne, nie masowe</div><h2>Głębiej: doświadczenia, których nie kupisz nigdzie indziej</h2>
+      <p>Zweryfikowane światowymi wzorcami (School of Life, silent-retreat economy, kliniki zdrowia artystów przy konserwatoriach Peabody i Vanderbilt) — ale wyrastające wprost z ludzi tego zespołu.</p></div>
+    <div class="grid g4">
+      <div class="card hoverable"><div class="tag clay">Sztuka</div><h3>Ciało Artysty</h3><p>Klinika zdrowia performera: pianistka, która zna ból zawodu + Rolfer-fizjoterapeuta. Pakiety dla muzyków filharmonii, oper i akademii.</p></div>
+      <div class="card hoverable"><div class="tag clay">Filozofia</div><h3>Seminarium Jogasutr</h3><p>Roczna szkoła filozofii jogi w kohorcie 12 osób — czytanie tekstów źródłowych z filozofem-praktykiem, nie weekendowy skrót.</p></div>
+      <div class="card hoverable"><div class="tag clay">Cisza</div><h3>Dom Ciszy</h3><p>Weekend pełnego milczenia dla 6 osób w domkach w drzewach — cisza jako luksus, w mikroskali niedostępnej sieciówkom.</p></div>
+      <div class="card hoverable"><div class="tag clay">Rytuał</div><h3>Czuwania</h3><p>Nocny kalendarz: przesilenia i Zaduszki. Literatura, fortepian o świcie, gongi — sezonowy rytuał, którego nie da się przenieść.</p></div>
+      <div class="card hoverable"><div class="tag clay">Przejścia</div><h3>Kręgi Przejścia</h3><p>Rytuały progowe dla kobiet (menopauza, strata, nowy rozdział) — projektowane z warsztatem antropolożki, prowadzone z czułością.</p></div>
+      <div class="card hoverable"><div class="tag clay">Dźwięk</div><h3>Piano-Nidra</h3><p>Album: kompozycje pianistki + prowadzona Nidra. Winyl kolekcjonerski i licencje dla hoteli — muzyka, nie „muzyczka”.</p></div>
+      <div class="card hoverable"><div class="tag clay">Słowo</div><h3>Atelier Słowa i Ciała</h3><p>8 tygodni pisania przeplatanego praktyką, prowadzi dziennikarka. Finał: wspólna antologia — wychodzisz z książką, nie z karnetem.</p></div>
+      <div class="card hoverable"><div class="tag clay">Mecenat</div><h3>Krąg Patronów Kamienicy</h3><p>20 mecenasów rocznie: prywatne recitale, kolacje filozoficzne, Rolfing i nazwisko w kamienicy — mecenat sztuki, nie karnet VIP.</p></div>
+    </div>
+  </div></section>
+
+  <section class="reveal"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Krok w XXII wiek</div><h2>Szkoła jogi przyszłości — technologia w służbie duszy</h2>
+      <p>Światowe wellness idzie w stronę mierzalnej regulacji i personalizacji. Yoga Academy może być pierwsza w Polsce — bez utraty kameralnego charakteru, bo technologia mierzy, a człowiek prowadzi.</p></div>
+    <div class="grid g3">
+      <div class="fut"><div class="tag">Pomiar</div><h3>Praktyka z dowodem: HRV i tętno</h3><p>Chętni uczestnicy mierzą zmienność rytmu serca (opaska/pierścień) przed i po praktyce. Po miesiącu widzisz wykres: Twój układ nerwowy realnie się reguluje. Abonament „praktyka z pomiarem” — premium, ale z duszą: dane są Twoje, nie ma rankingów.</p></div>
+      <div class="fut"><div class="tag">AI</div><h3>Asystent praktyki domowej</h3><p>Między zajęciami: spersonalizowany plan krótkich praktyk (na sen, na kręgosłup, na stres) podpowiadany przez AI wytrenowane na wiedzy zespołu — z bibliotekę nagrań własnych nauczycieli, nie generyczne wideo z internetu.</p></div>
+      <div class="fut"><div class="tag">Postawa</div><h3>Cyfrowy skan postawy</h3><p>Przy zapisie na ścieżkę „Ruch bez bólu”: analiza postawy ze zdjęcia/wideo (AI + ocena fizjoterapeuty). Po 3 miesiącach — drugi skan i porównanie. Efekt widoczny czarno na białym; naturalny wstęp do Rolfingu.</p></div>
+      <div class="fut"><div class="tag">Dźwięk</div><h3>Immersyjne audio 8D</h3><p>Nagrania Joga Nidra i medytacji w dźwięku przestrzennym (binaural/8D) z fortepianem Weroniki — biblioteka audio premium, jakiej nie ma żadna polska szkoła. Słuchawki + ciemność = domowy retreat.</p></div>
+      <div class="fut"><div class="tag">Longevity</div><h3>Program „Długowieczność”</h3><p>Roczna ścieżka 50+: badania mobilności co kwartał, joga + pilates + oddech, wykłady o zdrowym starzeniu. Trend longevity to najszybciej rosnący segment wellness — tu podany po ludzku, nie po sylikonowo-dolinowemu.</p></div>
+      <div class="fut"><div class="tag">Hybryda</div><h3>Członkostwo bez granic</h3><p>Jedno członkostwo: studio + biblioteka online + retreaty z pierwszeństwem + zniżka na Rolfing i wydarzenia. Klub, nie karnet — poczucie przynależności zamiast licznika wejść.</p></div>
+    </div>
+  </div></section>
+
+  <section class="reveal soft"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Wdrożenie</div><h2>5 następnych kroków dla strony</h2>
+      <p>Ta strona to prototyp kierunku. Tak proponujemy doprowadzić ją do wersji sprzedażowej.</p></div>
+    <div id="steps"></div>
+  </div></section>
+  <section class="reveal"><div class="wrap"><div class="band">
+    <h2>Porozmawiajmy o rozwoju szkoły</h2>
+    <p>Mamy gotowy moduł wiedzy, biznesplan i mapę produktów. Zróbmy następny krok razem — spokojnie, w duchu jogi.</p>
+    <a class="btn" onclick="tab('kontakt')">Kontakt</a>
+  </div></div></section>
+</div>
+
+<!-- ===== KONTAKT ===== -->
+<div class="panel" id="kontakt">
+  <section class="reveal"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Kontakt</div><h2>Odwiedź nas</h2></div>
+    <div class="grid g2">
+      <div class="card"><h3>Yoga Academy</h3>
+        <p style="margin:10px 0;color:var(--muted)">ul. Święty Marcin 31/1a<br>61-806 Poznań</p>
+        <p><a href="tel:+48505904825" style="color:var(--sage-d);font-weight:600">tel. 505 904 825</a><br>
+        <a href="mailto:info@yogaacademy.pl" style="color:var(--sage-d);font-weight:600">info@yogaacademy.pl</a></p>
+        <div class="soc" style="margin-top:16px">
+          <a href="https://www.instagram.com/yogaacademypoznan/" target="_blank" title="Instagram">📸</a>
+          <a href="https://www.facebook.com/yogaacademypoznan" target="_blank" title="Facebook">👍</a>
+          <a href="https://www.youtube.com/channel/UCD1ZmXG_pSVzTpLzvfD0ThA" target="_blank" title="YouTube">▶️</a>
+        </div>
+      </div>
+      <div class="card soft"><h3>Newsletter</h3>
+        <p style="margin:10px 0;color:var(--muted)">Informacje o warsztatach, wyjazdach i nowych zajęciach.</p>
+        <input placeholder="Twój e-mail" style="width:100%;padding:12px 14px;border-radius:100px;border:1px solid var(--line);background:var(--panel);color:var(--ink);margin-bottom:10px">
+        <button class="btn btn-primary" style="width:100%">Zapisz się</button>
+      </div>
+    </div>
+  </div></section>
+</div>
+
+<footer><div class="wrap"><div class="cols">
+  <div style="max-width:240px">
+    <div class="brand" style="margin-bottom:10px"><img src="logo_yoga-academy.svg" alt="logo" style="width:30px;height:30px"><span>yoga<em>Academy</em></span></div>
+    <p>Szkoła jogi i centrum świadomego ruchu w sercu Poznania. Od 2018 roku.</p>
+  </div>
+  <div><b>Szkoła</b><a onclick="tab('start')">Start</a><a onclick="tab('zajecia')">Zajęcia i cennik</a><a onclick="tab('zespol')">Zespół</a><a onclick="tab('wiedza')">Wiedza</a></div>
+  <div><b>Oferta</b><a onclick="tab('ebooki')">Ebooki</a><a onclick="tab('sklep')">Sklep</a><a onclick="tab('mozliwosci')">Nowe możliwości</a><a onclick="tab('kontakt')">Kontakt</a></div>
+  <div><b>Obserwuj</b>
+    <a href="https://www.instagram.com/yogaacademypoznan/" target="_blank">Instagram</a>
+    <a href="https://www.facebook.com/yogaacademypoznan" target="_blank">Facebook</a>
+    <a href="https://www.youtube.com/channel/UCD1ZmXG_pSVzTpLzvfD0ThA" target="_blank">YouTube</a>
+    <a href="#">Podcast „Świadomy Ruch”</a></div>
+</div>
+<p style="margin-top:30px;opacity:.7;font-size:.82rem">© Yoga Academy Poznań · prototyp strony 2026. Zdjęcia zespołu i stockowe — użycie próbne za zgodą właścicieli.</p>
+</div></footer>
+
+<div class="modal-bg" id="modalBg" onclick="if(event.target===this)closeModal()"><div class="modal" id="modal"></div></div>
+
+<script>
+const NAV=[["start","Start"],["zajecia","Zajęcia"],["zespol","Zespół"],["wiedza","Wiedza"],["ebooki","Ebooki"],["sklep","Sklep"],["mozliwosci","Możliwości"],["kontakt","Kontakt"]];
+
+const GALLERY=["hero_joga-poznan.jpg","studio_dsc01268.jpg","stock/stock_studio.jpg","stock/stock_yinmat.jpg","stock/stock_hands.jpg","hero_group-5.jpg"];
+
+const CLASSES=[
+ {t:`Ashtanga Joga`,lvl:`wszystkie poziomy`,d:`Dynamiczny, tradycyjny system praktyki w rytmie oddechu ujjayi — rdzeń szkoły, w autoryzowanej linii Mysore.`,
+  full:`<p>Ashtanga Vinyasa to tradycyjny system jogi przekazany przez Pattabhiego Joisa z Mysore, praktykowany w stałych sekwencjach, w których każdy ruch połączony jest z oddechem ujjayi. To praktyka, która buduje siłę, wytrzymałość i elastyczność, a jednocześnie — poprzez powtarzalność — uczy dyscypliny, cierpliwości i głębokiej koncentracji.</p><p>W Yoga Academy uczymy jej w autoryzowanej linii przekazu: Mateusz Deker posiada KPJAYI Authorized level 2 — jedną z nielicznych w Polsce autoryzacji od samego Sharatha Joisa.</p>`,
+  dla:`Dla osób, które chcą praktyki systematycznej i transformującej. Początkujący zaczynają od uproszczonych form — nie musisz znać sekwencji.`,ben:[`siła i wytrzymałość całego ciała`,`dyscyplina i spokój umysłu`,`jasna struktura postępu`]},
+ {t:`Vinyasa Krama / Mindful Vinyasa`,lvl:`początkujący+`,d:`Płynne, inteligentnie budowane sekwencje łączące siłę z uważnością — praktyka, która płynie razem z oddechem.`,
+  full:`<p>Vinyasa Krama to sztuka mądrego sekwencjonowania: pozycje układają się w logiczny ciąg, który krok po kroku przygotowuje ciało do głębszej pracy. Mindful Vinyasa dodaje do tego wymiar uważności — każdy ruch wykonujesz świadomie, z pełną obecnością.</p><p>To zajęcia kreatywne: żadna praktyka nie jest identyczna, a prowadzący dostosowuje intensywność do grupy.</p>`,
+  dla:`Dla osób lubiących ruch w rytmie oddechu, różnorodność i płynność. Świetne przejście po kursie dla początkujących.`,ben:[`mobilność i koordynacja`,`redukcja stresu przez uważny ruch`,`kreatywna, niepowtarzalna praktyka`]},
+ {t:`Yin Yoga`,lvl:`wszystkie poziomy`,d:`Długie, spokojne pozycje pracujące z powięziami — głęboka regeneracja i wyciszenie układu nerwowego.`,
+  full:`<p>Yin to przeciwwaga dla dynamicznego świata: pozycje trzymane 3–5 minut, głównie w siadzie i leżeniu, działają na powięzi, stawy i głębokie tkanki, których szybka praktyka nie dosięga. Bazuje na wiedzy Tradycyjnej Medycyny Chińskiej o meridianach.</p><p>Prowadzi Gosia Szydłowska (Yin RYT 100, uczennica linii Jo Phee — jednej z najlepszych nauczycielek yin na świecie).</p>`,
+  dla:`Dla przemęczonych, zestresowanych, intensywnie trenujących — i dla każdego, kto potrzebuje głębokiego wyciszenia.`,ben:[`regeneracja powięzi i stawów`,`wyciszenie układu nerwowego`,`lepszy sen i spokój`]},
+ {t:`Wstęp do jogi / dla początkujących`,lvl:`start od zera`,d:`Bezpieczne wprowadzenie od podstaw, bez presji i porównań — idealne, jeśli stajesz na macie po raz pierwszy.`,
+  full:`<p>Kurs prowadzony od absolutnych podstaw: uczysz się oddechu, najważniejszych pozycji i zasad bezpiecznej praktyki w małej, przyjaznej grupie. Nie musisz być rozciągnięty ani sprawny — pokazujemy modyfikacje dla każdego ciała.</p><p>To najlepsze drzwi do szkoły: po kursie wiesz, które zajęcia wybrać dalej, a prowadzący pomoże Ci zaplanować ścieżkę.</p>`,
+  dla:`Dla osób, które nigdy nie ćwiczyły jogi lub wracają po długiej przerwie.`,ben:[`pewny, bezpieczny start`,`zrozumienie podstaw oddechu i pozycji`,`plan dalszej ścieżki`]},
+ {t:`Inwersje i balanse / Wygięcia`,lvl:`średnio-zaawansowani`,d:`Stanie na rękach, balanse i zdrowe otwieranie klatki piersiowej — krok po kroku, z troską o bezpieczeństwo.`,
+  full:`<p>Warsztatowa praca nad najbardziej efektownymi elementami praktyki: staniem na rękach i głowie, balansami na ramionach oraz wygięciami do tyłu. Uczymy metodycznie — poprzez progresje, przygotowanie siłowe i asekurację, z naciskiem na zdrową technikę zamiast forsowania.</p><p>Prowadzi Natalia Nowosad — specjalistka mobilności i siły, z zapleczem wschodnich sztuk walki.</p>`,
+  dla:`Dla praktykujących, którzy chcą przełamać strach przed inwersjami i bezpiecznie otworzyć klatkę piersiową.`,ben:[`siła ramion i core`,`kontrola balansu i odwaga`,`zdrowe, głębokie wygięcia`]},
+ {t:`Trening jogina`,lvl:`wszystkie poziomy`,d:`Mobilność, siła i stabilność — funkcjonalne przygotowanie ciała, które wspiera całą Twoją praktykę.`,
+  full:`<p>Cykliczny trening uzupełniający: mobilność bioder i barków, stabilizacja, budowanie siły potrzebnej w asanach. Łączy metody jogi z treningiem funkcjonalnym — to „siłownia jogina” bez maszyn i sztang, za to z dużą świadomością ciała.</p><p>Regularny udział przekłada się bezpośrednio na postęp we wszystkich innych stylach.</p>`,
+  dla:`Dla każdego, kto chce ciała sprawniejszego na macie i poza nią — także dla biegaczy i sportowców.`,ben:[`mobilność, która zostaje`,`siła funkcjonalna`,`mniejsze ryzyko kontuzji`]},
+ {t:`Medytacja i pranajama`,lvl:`wszystkie poziomy`,d:`Techniki oddechu i wyciszenia umysłu oparte na tradycji i współczesnej neuronauce.`,
+  full:`<p>Systematyczna nauka medytacji i technik oddechowych: od prostych praktyk uspokajających po głębsze techniki pranajamy. Prowadzące łączą tradycyjny przekaz z wiedzą o układzie nerwowym — dowiesz się nie tylko „jak”, ale i „dlaczego to działa”.</p><p>Prowadzą Ania Olszewska (antropolożka, praktyk buddyzmu) i Iza Rzysko (nauczycielka mindfulness/MBSR).</p>`,
+  dla:`Dla zestresowanych, przebodźcowanych i ciekawych pracy z umysłem — bez potrzeby doświadczenia.`,ben:[`realna redukcja stresu`,`lepsza koncentracja i sen`,`narzędzia na całe życie`]},
+ {t:`Rolfing — Integracja Strukturalna`,lvl:`sesje indywidualne`,d:`Manualna praca z powięziami (fizjoterapia) w cyklu 10 sesji — praca z postawą i napięciami poza matą.`,
+  full:`<p>Rolfing® to metoda manualnej pracy z powięziami opracowana przez dr Idę Rolf: systematyczna reorganizacja struktury ciała w grawitacji, w cyklu 10 sesji. Pomaga przy przewlekłych bólach pleców i karku, wadach postawy, napięciach i dolegliwościach psychosomatycznych.</p><p>Sesje prowadzi Mateusz Deker — Certyfikowany Rolfer® (Rolf Institute i European Guild) oraz magister fizjoterapii. Posiadacze karnetu Yoga Academy płacą 230 zł zamiast 250 zł.</p>`,
+  dla:`Dla osób z przewlekłymi napięciami, bólem, po urazach — oraz praktykujących, którzy chcą głębszej pracy ze strukturą ciała.`,ben:[`poprawa postawy`,`uwolnienie przewlekłych napięć`,`większa swoboda ruchu i oddechu`]},
+ {t:`Joga + Pilates`,lvl:`wszystkie poziomy`,d:`Praca z centrum i stabilizacją — most między jogą a ruchem funkcjonalnym, świetny dla kręgosłupa.`,
+  full:`<p>Połączenie tego, co najlepsze w obu metodach: precyzyjna praca z centrum (powerhouse) i stabilizacją z pilatesu spotyka oddech i przestrzeń jogi. Zajęcia szczególnie cenione przez osoby z problemami kręgosłupa i wracające do formy po fizjoterapii.</p><p>Prowadzi Lucyna Eich — nauczycielka Ashtangi (TTC 500h) i certyfikowana instruktorka pilatesu (CPPP, w tym reformer).</p>`,
+  dla:`Dla osób dbających o kręgosłup, po fizjoterapii i wszystkich, którzy chcą mocnego, stabilnego centrum.`,ben:[`zdrowy kręgosłup`,`silne centrum ciała`,`świadoma, precyzyjna technika`]},
+];
+
+const TEAM=[
+ {slug:"mateusz",name:"Mateusz Deker",role:"Założyciel · Ashtanga · Fizjoterapia & Rolfing",img:"team_mateusz-deker.jpeg",
+  intro:`Filar merytoryczny szkoły — łączy autoryzację Mysore z dyplomem fizjoterapeuty.`,
+  chips:["KPJAYI Authorized lvl 2","mgr fizjoterapii","Certyfikowany Rolfer®","filozof jogi"],
+  bio:`<p>Z jogą związany właściwie od dziecka — pokazała mu ją jedna z prekursorek jogi w Polsce, Maria Stróżyk. Pierwszy kurs nauczycielski ukończył mając 18 lat u Basi Lipskiej i od tego czasu nieprzerwanie prowadzi zajęcia. Dla Mateusza joga nigdy nie była tylko ćwiczeniem ciała — od początku szukał w niej całościowego podejścia do człowieka.</p>
+  <p>W trakcie czterech pobytów w Indiach uczył się metody Ashtanga Vinyasa pod okiem nieżyjącego już Sharatha Joisa — wnuka Pattabhiego Joisa — który autoryzował go do nauczania I i II Serii (<b>KPJAYI Authorized level 2</b>). Spędził łącznie 9 miesięcy na codziennej praktyce w Instytucie w Mysore, a w lutym 2019 po raz pierwszy asystował swojemu Nauczycielowi podczas prowadzenia zajęć.</p>`,
+  extra:["Fascynacja ludzkim ciałem zaprowadziła go w 2019 na 5-letnie studia magisterskie z <b>Fizjoterapii</b> — pracę magisterską o Integracji Strukturalnej metodą Idy Rolf obronił w lipcu 2024. Pokochał anatomię i manualną pracę z ciałem.",
+  "<b>Certyfikowany Rolfer®</b> (certyfikacja w Monachium, kwiecień 2025) — ukończył szkolenia w dwóch największych europejskich ośrodkach: European Guild for Structural Integration oraz Rolf Institute. Prowadzi gabinet rolfingpoznan.pl.",
+  "Ukończył studia z filozofii i religioznawstwa oraz studium doktoranckie WNS UAM — jest autorem artykułów naukowych i popularnonaukowych o filozofii jogi.",
+  "Wykształcił znaczną część zespołu szkoły (kursy nauczycielskie RYT 200/300/500) — to wokół jego praktyki uformowała się cała społeczność Yoga Academy."],
+  links:[["Instagram @mateusz.deker","https://www.instagram.com/mateusz.deker/"],["FB: Ashtanga Yoga Poznań","https://www.facebook.com/ashtanga.yoga.poznan/"],["Gabinet Rolfing Poznań","https://rolfingpoznan.pl/"]]},
+
+ {slug:"ania",name:"Ania Olszewska",role:"Medytacja · Oddech · Nauka",img:"team_ania-olszewska.jpeg",
+  intro:`Głębia intelektualna szkoły — łączy praktykę duchową z antropologią i neuronauką.`,
+  chips:["E-RYT 500","antropolożka","neuronauka","buddyzm tybetański"],
+  bio:`<p>Nauczycielka jogi, medytacji i pracy z oddechem; kształci obecnych i przyszłych nauczycieli, współtworząc Yoga Teachers' Academy. Jest buddystką w nurcie buddyzmu tybetańskiego, a dzięki Mateuszowi Dekerowi jej codzienną praktyką jogy jest Ashtanga.</p>
+  <p>Jej zainteresowanie jogą wyrosło z regularnych podróży do Hyderabadu w południowych Indiach, które rozpoczęła w 2006 roku. Życie tam i zgłębianie indyjskich filozofii stało się znaczącą częścią jej rozumienia rzeczywistości. Praktykę buddyjską rozpoczęła w ośrodku medytacyjnym Tushita w Dharamsali, kilkukrotnie uczestniczyła w naukach Dalajlamy — jak sama mówi, były to doświadczenia przełomowe. Kursy nauczycielskie 200h i 300h ukończyła w 2018 w Dharamsali.</p>`,
+  extra:["Jogą zajmuje się także <b>akademicko</b>: zjawiskiem jogi współczesnej zajęła się podczas międzynarodowego programu studiów antropologicznych na UAM i Uniwersytecie w Bernie, gdzie przeprowadziła badania etnograficzne motywacji osób decydujących się na kursy nauczycielskie w Indiach.",
+  "Tworzy <b>film etnograficzny</b> o współczesnym joginie w Indiach, który czeka jeszcze na swoją premierę.",
+  "Pasjonuje się neuronauką i jej przełożeniem na praktyki kontemplacyjne; rozpoczęła <b>Studia Podyplomowe Uważności i Współczucia (SWPS)</b> i opisuje się jako antropolożka i psychoterapeutka w szkoleniu.",
+  "Prowadzi autorskie warsztaty (m.in. „Joga a stres”, „Partner Yoga”) — łączy w nich wiedzę o układzie nerwowym z praktyką na macie."],
+  links:[["Instagram @_ania_olszewska_","https://www.instagram.com/_ania_olszewska_/"],["Yoga Teachers' Academy","https://yogateachersacademy.pl/"]]},
+
+ {slug:"gosia",name:"Gosia Szydłowska",role:"Yin · Joga Nidra · Słowo",img:"team_gosia-szydlowska.jpg",
+  intro:`Głos i wrażliwość szkoły — dziennikarka, która praktykę splata z naturą i literaturą.`,
+  chips:["Ashtanga RYT 500","Yin RYT 100","Joga Nidra RYT 15","dziennikarka"],
+  bio:`<p>Z wykształcenia polonistka i dziennikarka, studiowała również historię sztuki. Jak mówi o sobie: jej praca polega na sprawianiu, by ludzie czuli się dobrze. Kocha sztukę, literaturę, podróże, polskie morze i psy. Praktykuje jogę regularnie od ponad 10 lat, już jako dojrzała kobieta — dzięki czemu czuje się silna, spójna i zdrowa. Dąży w życiu do równowagi, dlatego praktykuje zarówno dynamiczną, jak i łagodną odmianę jogi.</p>
+  <p>Jest nauczycielką Ashtanga jogi RYT 500, Yin jogi i akupresury RYT 100 oraz Joga Nidry RYT 15. Cztery miesiące spędziła w Mysore, praktykując w Sharath Yoga Centre; wiedzę z zakresu Yin pogłębia u Dominika Trznadla, starszego asystenta Jo Phee — jednej z najlepszych na świecie nauczycielek yin jogi.</p>`,
+  extra:["Prowadzi własne, autorskie miejsce <b>„Lost Garden — domki w drzewach & joga”</b> pod Poznaniem (obecne także na Airbnb) — to unikalna, gotowa baza pod kameralne retreaty jogowe łączące nocleg z praktyką.",
+  "Jej literacki, storytellingowy styl (kompetencja dziennikarska i polonistyczna) czyni ją naturalną autorką treści, newslettera i przewodników szkoły.",
+  "Specjalizuje się w praktykach regeneracji: Yin i Joga Nidra to jej narzędzia pracy ze snem, stresem i wyciszeniem — coraz bardziej poszukiwane w zabieganym świecie."],
+  links:[["Instagram @lostgarden.pl","https://www.instagram.com/lostgarden.pl/"],["FB: Lost Garden","https://www.facebook.com/lostgarden.org/"]]},
+
+ {slug:"lucyna",name:"Lucyna Eich",role:"Ashtanga · Pilates",img:"team_lucyna-eich.jpeg",
+  intro:`Most między jogą a ruchem funkcjonalnym — Ashtanga i Pilates w jednym.`,
+  chips:["Ashtanga TTC 500h","Pilates CPPP","reformer","yin"],
+  bio:`<p>Pamięta doskonale, że już pierwsze zajęcia Ashtanga Jogi dały jej dużo radości, a ten tradycyjny system praktyki z czasem coraz bardziej zmieniał jej codzienność — uczył dyscypliny oraz zrozumienia dla zmienności i nietrwałości. Ashtanga jest wymagająca, stawia wyzwania, ale sprawia również, że niemożliwe staje się możliwe, zarówno w treningu ciała, jak i umysłu.</p>
+  <p>Ukończyła Kurs Nauczycielski Yoga Alliance 500h TTC u Mateusza Dekera. Jogowe doświadczenia są dla niej niezmiennie inspirujące — dają szansę poznawać wspaniałych ludzi i wspólnie praktykować. Joga inspiruje ją też do poznawania innych technik pracy z ciałem.</p>`,
+  extra:["Certyfikowana instruktorka <b>Pilates (CPPP1/CPPP2)</b>, w tym <b>Pilates Reformer</b> — rzadsza i wyżej wyceniana kompetencja sprzętowa; uczy m.in. w Balance Movement (Suchy Las) oraz Yasne Studio.",
+  "Hybryda Ashtanga + Pilates to naturalny pomost do zajęć funkcjonalnych, pracy z kręgosłupem i oferty dla osób wracających do formy po fizjoterapii.",
+  "Prowadzi też praktyki takie jak „joga księżycowa” i yin — pracuje z łagodną, regeneracyjną stroną ruchu."],
+  links:[["Yoga Loft — profil","https://www.yogaloft.pl/lucy/"]]},
+
+ {slug:"iza",name:"Iza Rzysko",role:"Mindfulness · MBSR · Psychoterapia",img:"team_iza-rzysko.jpg",
+  intro:`Pomost między ciałem a umysłem — joga, mindfulness i psychoterapia.`,
+  chips:["Ashtanga Vinyasa","MBSR","ACT / psychoterapia","studio online"],
+  bio:`<p>Znalazła jogę wcale jej nie szukając — pojawiła się w jej życiu w 2009 roku i już została. Choć różne style pojawiały się na jej macie, pozostała Ashtanga Vinyasa: praktyka, która daje jej dużo siły i wzmacnia nie tylko fizycznie, ale przede wszystkim psychicznie. Z czasem zaczęła zagłębiać się w filozofię jogi, pranajamę i medytację.</p>
+  <p>Praktykę pogłębiała pod okiem Sharatha Joisa w Mysore (2016, 2017, 2019) oraz u Sharmili Desai na Goa (2020). Jej pierwszym nauczycielem był i nadal jest Mateusz Deker. Stara się na każdych zajęciach, w sposób delikatny i spójny, przekazywać, jak transformujące działanie ma praktyka jogi.</p>`,
+  extra:["Jest uczennicą <b>Polskiego Instytutu Mindfulness</b> w Warszawie (ścieżka MBSR wg Jona Kabata-Zinna) oraz <b>Szkoły Psychoterapii Integratywnej „Serce ACTu”</b> w Poznaniu — jej profil to „ciało + umysł + układ nerwowy”, nie sam fitness.",
+  "Prowadzi własną markę <b>Izabela Rzysko Yoga & Mindfulness</b> z <b>Domowym Studiem Jogi Online</b> (subskrypcja z nowymi praktykami co miesiąc) — gotowy, skalowalny wzorzec modelu online dla całej szkoły.",
+  "Organizuje kursy MBSR, retreaty, wieczorne medytacje i koncerty gongów; jest rekomendowaną nauczycielką mindfulness.",
+  "Jej kompetencje to najmocniejszy fundament pod ofertę B2B / wellbeing dla firm."],
+  links:[["Instagram @izabelarzysko_yoga_mindfulness","https://www.instagram.com/izabelarzysko_yoga_mindfulness/"],["FB: Izabela Rzysko Yoga&Mindfulness","https://www.facebook.com/IzabelaRzyskoYoga/"]]},
+
+ {slug:"natalia",name:"Natalia Nowosad",role:"Mobilność · Siła · Ruch",img:"team_natalia-nowosad.jpg",
+  intro:`Techniczny autorytet ruchu — mobilność, siła i estetyka praktyki.`,
+  chips:["Ashtanga RYT 500","mobilność","sztuki walki / zen","warsztaty performance"],
+  bio:`<p>Joga pojawiała się w jej życiu kilka razy epizodycznie, jednak na stałe zagościła w nim w 2019 roku, gdy trafiła do Yoga Academy i poznała Ashtangę — która szybko stała się jej codzienną praktyką, na macie i poza nią. Pod okiem Mateusza Dekera ukończyła kurs Ashtanga Vinyasa Yoga RYT 200H (2021), a rok później rozszerzenie RYT 300H.</p>
+  <p>Praca jednocześnie z ciałem, oddechem i umysłem towarzyszyła jej jednak od dziecka — poprzez trenowanie wschodnich sztuk walki opartych o tradycję filozofii zen, których celem jest doskonalenie siebie przez codzienną praktykę i budowanie uważności. Ashtangę odbiera jako naturalną kontynuację tamtej drogi.</p>`,
+  extra:["Specjalizuje się w <b>mobilności, sile i dynamice</b>: prowadzi cykliczny „Trening Jogina: ruch i stabilność” oraz warsztaty tematyczne (backbendy, stanie na rękach, mobilność bioder, przewroty).",
+  "Jej treści (progresje handstand i arm-balance) to najlepszy materiał na <b>content wideo</b> i evergreen kurs online — techniczny, konkretny, atrakcyjny wizualnie.",
+  "Cztery miesiące praktyki w Mysore (Sharath Yoga Centre); powrót do karate stanowi filozoficzne zakotwiczenie jej praktyki.",
+  "Współtworzy Yoga Teachers' Academy jako nauczycielka o profilu performance/mobilność."],
+  links:[["Instagram @nat.nowosad","https://www.instagram.com/nat.nowosad/"]]},
+
+ {slug:"weronika",name:"Weronika Manikowska-Górska",role:"Joga · Muzyka na żywo",img:"team_weronika-manikowska.jpeg",
+  intro:`Rzadki most między jogą a muzyką — zawodowa pianistka na macie.`,
+  chips:["pianistka koncertowa","mgr fortepianu","Ashtanga RYT 200→300","taniec towarzyski"],
+  bio:`<p>Z wykształcenia pianistka, a oprócz muzyki pasjonuje ją taniec, górskie wyprawy i te najbliższe podróże — w głąb samej siebie. Gra na instrumencie pozwoliła jej od dziecka zgłębiać stany emocjonalne, rozbudziła głęboką wrażliwość na piękno i pokazała możliwości niewerbalnej komunikacji ze światem. Praktyka jogi jest dla niej kumulacją tych subtelności — połączeniem nierozerwalnych części każdego z nas: ciała i umysłu.</p>
+  <p>Pierwsze kroki na macie stawiała 8 lat temu podczas zajęć metodą Iyengara, prawdziwie jednak pochłonęła ją ashtanga vinyasa, którą pokazał jej Mateusz Deker i pod którego okiem praktykuje do dziś. Ukończyła kurs nauczycielski RYT 200 i kontynuuje RYT 300.</p>`,
+  extra:["Jest <b>zawodową pianistką klasyczną</b>: magisterium fortepianu w Akademii Muzycznej w Poznaniu (klasa prof. Macieja Pabicha, wynik celujący), laureatka kilkunastu konkursów krajowych i zagranicznych (m.in. Görlitz, „Musica Insieme”, konkurs im. Bacewicz).",
+  "Występowała m.in. w <b>NFM we Wrocławiu</b>, była uczestniczką Aurora Chamber Music Festival w Szwecji oraz kursów Towarzystwa im. F. Liszta; solowy debiut z orkiestrą zagrała koncertem Mozarta KV 488.",
+  "Jest pedagogiem fortepianu i kameralistyki (uczy w „Szkole Talentów”).",
+  "To jej unikalny, dziś niewykorzystany atut: most <b>joga + muzyka na żywo</b> — koncert-praktyka i sound journey z fortepianem, jakich nie ma żadne inne studio w Poznaniu."],
+  links:[]},
+];
+
+const WIEDZA=[
+ [`Nasze podejście`,`Joga jako narzędzie zdrowia`,`Łączymy praktykę z wiedzą fizjoterapeutyczną. Delikatne, kontrolowane ruchy sprzyjają regeneracji, poprawiają elastyczność i siłę oraz wspierają koordynację — a nasza pracownia fizjoprofilaktyki pomaga zapobiegać urazom i przeciążeniom.`],
+ [`Ciało`,`Powięzi i Rolfing`,`Manualna praca z powięziami metodą Idy Rolf poprawia postawę, uwalnia napięcia i wspiera powrót do sprawności — to świetne uzupełnienie praktyki na macie.`],
+ [`Umysł`,`Układ nerwowy i oddech`,`Regularna praktyka i świadomy oddech regulują układ nerwowy — redukują stres i poprawiają jakość snu. Uczymy tego językiem neuronauki, nie ezoteryki.`],
+ [`Uważność`,`Mindfulness i MBSR`,`Uważność to „siłownia umysłu” — trenowalna, mierzalna umiejętność radzenia sobie ze stresem i emocjami, oparta na sprawdzonych programach MBSR.`],
+ [`Tradycja`,`Ashtanga i filozofia jogi`,`Ośmiostopniowa ścieżka Patańdżalego to więcej niż asany — to praktyka obejmująca człowieka jako całość, którą przekazujemy z autoryzowanej linii Mysore.`],
+ [`Dostępność`,`Joga dla każdego ciała`,`Nie każda pozycja jest dla wszystkich — dlatego zawsze doradzamy i oferujemy modyfikacje, byś praktykował z szacunkiem do swojego ciała i możliwości.`],
+];
+
+const SIGS=[
+ [`S1`,`Mateusz · Gosia · Weronika`,`Reset Układu Nerwowego`,`Wieczór premium: praca z powięziami i somatyką, Yin/Joga Nidra oraz fortepian na żywo. Dla wypalonych profesjonalistów — biletowane doświadczenie regeneracji.`],
+ [`S2`,`Ania · Iza · Mateusz`,`Joga a Mózg`,`Kurs oparty na dowodach o stresie, uwadze i śnie — pozycjonuje szkołę jako science-backed. Rozszerzenia: ebook, podcast, film.`],
+ [`S3`,`Mateusz · Lucyna · Natalia`,`Ruch bez bólu`,`Pomost fizjoterapia ↔ joga dla osób pracujących biurowo i po urazach, z siecią skierowań od fizjoterapeutów i upsellem do Rolfingu 1:1.`],
+ [`S4`,`Gosia · Ania`,`Retreaty „Cisza i Słowo”`,`Joga plus pisanie i kreatywność w domkach w drzewach Lost Garden — wysoka marża, gotowa baza noclegowa, zero inwestycji.`],
+ [`S5`,`Iza · Mateusz · Natalia`,`Firmowy System Regulacji`,`Abonament wellbeing dla poznańskich biur (MBSR + ergonomia + mobility-breaks) — przewidywalny, powtarzalny przychód B2B.`],
+ [`S6`,`Weronika · Ania`,`Koncert-Praktyka`,`Cykl kulturalny: fortepian na żywo plus prowadzona medytacja. Most do publiczności filharmonii — zupełnie nowy segment klienta.`],
+ [`S7`,`Mateusz · Lucyna`,`Mobilność 50+`,`Longevity i healthy-aging dla zamożnego, niedoobsługiwanego segmentu — poranne pasma, wyższa lojalność.`],
+ [`S8`,`Mateusz · Ania`,`Akademia jako silnik IP`,`Kursy 200h/300h plus subskrypcja doszkalająca dla absolwentów (YACEP) oraz anglojęzyczny TTC — najwyższa marża i zasięg międzynarodowy.`],
+ [`S9`,`Iza + szkoła`,`Domowe Studio YA Online`,`Sfederować gotowy model online Izy pod markę Yoga Academy — biblioteka praktyk terapeutycznych dla klientów spoza Poznania.`],
+ [`S10`,`Ania · Mateusz · Gosia`,`Podcast „Świadomy Ruch”`,`Istniejący podcast jako oś treści i lejek — patronite/sponsoring, budowa autorytetu krajowego z lokalnej bazy.`],
+];
+
+const STEPS=[
+ [`1`,`Rezerwacja i płatności online`,`Wdrożyć system grafiku/rezerwacji (np. Fitssey, eFitness, Momence) i płatność online — koniec „karnet tylko na miejscu”. To warunek skalowania i mniejsza liczba nieobecności.`],
+ [`2`,`Zakładka „Możliwości” jako oferta live`,`Zamienić prezentowane tu produkty sygnaturowe (S1–S10) w realne strony zapisów z terminami, cenami i formularzem — najpierw 2–3 pilotaże (Reset Układu Nerwowego, Ruch bez bólu, Koncert-Praktyka).`],
+ [`3`,`Biblioteka ebooków i lejek`,`Opublikować pierwsze 3 ebooki (darmowy „Pierwsza joga” jako lead-magnet, dalej płatne przewodniki). Zapis mailowy zasila newsletter i automatyczny lejek pozyskiwania klientów.`],
+ [`4`,`Sklep i produkty cyfrowe`,`Podpiąć realny koszyk (obecnie makieta) do akcesoriów, voucherów, ebooków i audio (Nidra, medytacje) — dodatkowy, wysokomarżowy przychód spójny z klimatem.`],
+ [`5`,`Reaktywacja mediów i treści`,`Regularny format na YouTube (playlisty PL-SEO, mini-klasy dla początkujących) plus podcast wpięty w stronę. Darmowy content buduje zaufanie i prowadzi do płatnych ścieżek.`],
+];
+
+const EBOOKS=[
+ [`Pierwsza joga w życiu — przewodnik dla zupełnie początkujących`,`zespół Yoga Academy`,`Osoby, które nigdy nie były na jodze`,[`Czym joga jest, a czym nie jest — obalamy 7 mitów`,`Czego potrzebujesz na start (i czego NIE)`,`Pierwsze wejście do studia — jak się zachować`,`10 podstawowych pozycji krok po kroku`,`Oddech, który uspokaja — ujjayi dla początkujących`,`Twoje pierwsze 30 dni praktyki (plan)`,`Jak wybrać zajęcia dla siebie`]],
+ [`Ashtanga od podstaw — Pierwsza Seria krok po kroku`,`Mateusz Deker`,`Praktykujący, którzy chcą zrozumieć system`,[`Skąd pochodzi Ashtanga — Mysore i linia Joisów`,`Oddech ujjayi, bandhy i drishti`,`Powitania słońca A i B`,`Sekwencja pozycji stojących`,`Pozycje siedzące — mapa Pierwszej Serii`,`Finishing sequence i odpoczynek`,`Dyscyplina praktyki: jak ćwiczyć w domu`]],
+ [`Powięź — instrukcja obsługi Twojego ciała`,`Mateusz Deker`,`Osoby z napięciami i przewlekłym bólem`,[`Czym jest powięź i dlaczego decyduje o samopoczuciu`,`Jak powstają napięcia i wzorce bólu`,`Rolfing i Integracja Strukturalna — o co chodzi`,`Postawa: co Twoje ciało mówi o Twoim życiu`,`Proste techniki uwalniania w domu`,`Kiedy joga, a kiedy terapeuta (demarkacja)`,`Cykl 10 sesji — czego się spodziewać`]],
+ [`Joga bez bólu pleców — fizjoprofilaktyka kręgosłupa`,`Mateusz Deker`,`Osoby pracujące biurowo, po urazach`,[`Anatomia kręgosłupa bez żargonu`,`Najczęstsze przeciążenia i ich przyczyny`,`Pozycje bezpieczne kontra ryzykowne dla pleców`,`Mobilizacja bioder — klucz do zdrowego grzbietu`,`Wzmocnienie centrum (core) bez przeciążeń`,`Protokół 15 minut dziennie`,`Sygnały ostrzegawcze — kiedy do specjalisty`]],
+ [`Układ nerwowy na macie — joga okiem neuronauki`,`Ania Olszewska`,`Ciekawi „jak to działa”, zestresowani`,[`Współczulny i przywspółczulny — Twoje dwa biegi`,`Nerw błędny i tonus wagalny — co realnie regulujesz`,`Dlaczego oddech zmienia stan umysłu`,`Interocepcja: słuchanie sygnałów ciała`,`Medytacja a plastyczność mózgu`,`Praktyki na regulację w 5 minut`,`Co mówi nauka, a czego jeszcze nie wiemy`]],
+ [`Antropolog na macie — co joga naprawdę znaczy`,`Ania Olszewska`,`Myślący praktycy, sceptycy`,[`Joga w Indiach a joga na Zachodzie`,`Krótka historia jogi współczesnej`,`Co badania etnograficzne mówią o kursantach`,`Duchowość bez dogmatu`,`Filozofia jogi w codziennym życiu`,`Buddyzm i uważność — punkty styczne`,`Praktyka poza matą`]],
+ [`Oddech i medytacja dla zabieganych`,`Ania Olszewska / Iza Rzysko`,`Osoby bez czasu, wysoki stres`,[`Fizjologia oddechu w pigułce`,`7 technik pranajamy od najprostszej`,`Medytacja 5 / 10 / 20 minut`,`Uważność w codziennych czynnościach`,`Praca ze stresem i natłokiem myśli`,`Rytuał poranny i wieczorny`,`Jak zbudować nawyk, który zostaje`]],
+ [`Cisza w mieście — 21 mikropraktyk dla przeciążonego mózgu`,`Iza Rzysko`,`Mieszkańcy miast, przebodźcowani`,[`Dlaczego miasto męczy układ nerwowy`,`Mikropraktyki 60-sekundowe`,`Uważny spacer i jedzenie`,`Cyfrowy detoks bez fanatyzmu`,`Regulacja emocji metodą ACT`,`Sen jako praktyka`,`Plan na 21 dni`]],
+ [`Mindfulness i redukcja stresu — MBSR w pigułce`,`Iza Rzysko`,`Zestresowani, przed wypaleniem`,[`Czym jest MBSR i skąd się wzięło`,`Skanowanie ciała krok po kroku`,`Uważny ruch`,`Praca z trudnymi myślami (ACT)`,`Uważność w relacjach`,`8-tygodniowy plan praktyki`,`To NIE terapia — ważna demarkacja`]],
+ [`Oddech przedsiębiorcy — regulacja stresu w 3 minuty`,`Iza Rzysko`,`Właściciele firm, menedżerowie`,[`Koszt chronicznego stresu dla decyzji`,`3-minutowy reset między spotkaniami`,`Oddech przed trudną rozmową`,`Uważność a wypalenie zespołu`,`Mikroprzerwy w dniu pracy`,`Sen i regeneracja lidera`,`Jak wprowadzić to w firmie`]],
+ [`Sen jak dziecko — Joga Nidra i wieczorne rytuały`,`Gosia Szydłowska`,`Osoby z problemami ze snem`,[`Dlaczego nie możesz zasnąć`,`Czym jest Joga Nidra`,`Anatomia dobrego wieczoru`,`Skrypt Nidry do zaśnięcia`,`Pozycje Yin na wyciszenie`,`Rytuał wieczorny krok po kroku`,`Higiena snu bez sloganów`]],
+ [`Yin Yoga — spokój, powięzi i regeneracja`,`Gosia Szydłowska`,`Przemęczeni dynamiką i sportem`,[`Yin i yang — dlaczego potrzebujesz obu`,`Powięzi i meridiany (perspektywa TCM)`,`12 kluczowych pozycji Yin`,`Jak długo trzymać i dlaczego`,`Praca z oddechem w bezruchu`,`Yin na konkretne partie ciała`,`Sekwencja regeneracyjna 45 minut`]],
+ [`Joga dla ludzi, którzy nie znoszą jogi`,`Natalia Nowosad / Gosia Szydłowska`,`Sceptycy, sportowcy, „sztywni”`,[`„Nie jestem rozciągnięty” i inne wymówki`,`Joga to nie religia ani cyrk`,`Ruch funkcjonalny zamiast póz na Instagram`,`Mobilność, która realnie pomaga w sporcie`,`Bez patosu: praktyka dla konkretnych ludzi`,`20 minut, które zmieniają dzień`,`Jak nie rzucić po tygodniu`]],
+ [`Mobilność jogina — siła, balans, wygięcia`,`Natalia Nowosad`,`Praktykujący średnio-zaawansowani`,[`Mobilność kontra elastyczność — różnica`,`Rozgrzewka, która przygotowuje do wszystkiego`,`Droga do stania na rękach (progresje)`,`Backbendy bezpiecznie i bez bólu`,`Przejścia i przewroty`,`Mobilność bioder i obręczy barkowej`,`Plan progresji na 8 tygodni`]],
+ [`Backbend bez strachu — psychologia otwierania`,`Natalia Nowosad / Iza Rzysko`,`Bojący się wygięć i inwersji`,[`Dlaczego wygięcia budzą lęk`,`Ciało a układ nerwowy w pozycji odwróconej`,`Bezpieczna anatomia backbendu`,`Progresja od mostka do głębszych wygięć`,`Praca z oddechem i strachem`,`Regeneracja po intensywnej praktyce`,`Kiedy odpuścić — mądrość ponad ego`]],
+ [`Joga + Pilates — centrum, stabilizacja, kręgosłup`,`Lucyna Eich`,`Osoby po fizjoterapii, biurowe`,[`Joga a Pilates — różnice i synergia`,`Oddech pilatesowy`,`„Powerhouse” — Twoje centrum`,`15 ćwiczeń na macie`,`Reformer — czym jest i co daje`,`Integracja z praktyką jogi`,`Plan tygodnia dla zdrowego kręgosłupa`]],
+ [`Ciało pianisty, ciało jogina — napięcie i uwolnienie`,`Weronika Manikowska-Górska / Mateusz Deker`,`Muzycy, artyści, pracujący rękami`,[`Zawodowe napięcia muzyka i ich koszt`,`Nadgarstki, przedramiona, obręcz barkowa`,`Postawa przy instrumencie`,`Joga i mobilność dla precyzji ruchu`,`Oddech a trema i koncentracja`,`Regeneracja po wielogodzinnej pracy`,`Codzienna rutyna 15 minut`]],
+ [`Joga i muzyka — praktyka w rytmie dźwięku`,`Weronika Manikowska-Górska`,`Wrażliwi na dźwięk, szukający głębi`,[`Jak dźwięk działa na układ nerwowy`,`Muzyka na żywo kontra nagrania w praktyce`,`Sound journey — czym jest`,`Oddech i rytm`,`Prowadzenie praktyki z muzyką`,`Playlisty do domowej praktyki`,`Koncert-praktyka: nowe doświadczenie`]],
+ [`Joga po 50-tce — mobilność na kolejne 30 lat`,`Lucyna Eich / Mateusz Deker`,`Osoby 50+, dbające o długowieczność`,[`Ciało po 50-tce — co się realnie zmienia`,`Mobilność jako inwestycja w niezależność`,`Bezpieczne pozycje i modyfikacje`,`Równowaga i profilaktyka upadków`,`Siła kości i mięśni`,`Praca z oddechem i regeneracją`,`Plan praktyki na tydzień`]],
+ [`Retreat w domu — 7 dni joga i cisza`,`zespół Yoga Academy`,`Chcący spróbować retreatu bez wyjazdu`,[`Jak przygotować przestrzeń i czas`,`Plan każdego z 7 dni`,`Sekwencje: rano dynamicznie, wieczorem Yin`,`Medytacja i cisza w ciągu dnia`,`Uważne posiłki`,`Dziennik praktyki`,`Jak przenieść to doświadczenie do Lost Garden`]],
+];
+
+const SHOP=[
+ [`prod_mata.jpg`,`Mata do jogi — premium`,`Akcesoria`,`Antypoślizgowa, ekologiczna mata z linii Yoga Academy.`,`199 zł`],
+ [`prod_klocki.jpg`,`Klocki do jogi (2 szt.)`,`Akcesoria`,`Korkowe klocki wspierające bezpieczne wejścia w pozycje.`,`89 zł`],
+ [`prod_pasek.jpg`,`Pasek do jogi`,`Akcesoria`,`Bawełniany pasek ułatwiający rozciąganie i modyfikacje.`,`39 zł`],
+ [`prod_bolster.jpg`,`Bolster / wałek Yin`,`Akcesoria`,`Wałek do praktyki Yin i restoratywnej — głęboka regeneracja.`,`149 zł`],
+ [`prod_skarpetki.jpg`,`Skarpetki antypoślizgowe`,`Akcesoria`,`Do praktyki i pilatesu — pewny kontakt z podłożem.`,`45 zł`],
+ [`prod_bluza.jpg`,`Bluza eco „Świadomy Ruch”`,`Odzież`,`Miękka bluza z bawełny organicznej, unisex, co-brand.`,`239 zł`],
+ [`prod_karta.jpg`,`Karta podarunkowa`,`Vouchery`,`Podaruj praktykę — voucher na karnet lub warsztat.`,`od 150 zł`],
+ [`prod_rolfing.jpg`,`Voucher: sesja Rolfing`,`Vouchery`,`Sesja Integracji Strukturalnej z Mateuszem Dekerem.`,`250 zł`],
+ [`prod_ebook1.jpg`,`Ebook „Pierwsza joga w życiu”`,`Cyfrowe`,`Przewodnik dla początkujących w PDF. Idealny na start.`,`gratis`],
+ [`prod_ebook2.jpg`,`Ebook „Powięź — instrukcja obsługi ciała”`,`Cyfrowe`,`Pogłębiony przewodnik Mateusza Dekera (PDF).`,`49 zł`],
+ [`prod_audio.jpg`,`Audio: Joga Nidra na sen`,`Cyfrowe`,`Nagranie prowadzone przez Gosię — głębokie wyciszenie.`,`39 zł`],
+ [`prod_koncert.jpg`,`Bilet: Koncert-Praktyka`,`Wydarzenia`,`Wieczór jogi z fortepianem na żywo (Weronika).`,`89 zł`],
+];
+/* Ceny rynkowe ebooków PL (poradniki PDF 30-90 zł; lead-magnet gratis) */
+const EPRICE=[`gratis`,`44 zł`,`49 zł`,`49 zł`,`54 zł`,`39 zł`,`39 zł`,`34 zł`,`44 zł`,`39 zł`,`39 zł`,`39 zł`,`34 zł`,`44 zł`,`44 zł`,`44 zł`,`49 zł`,`39 zł`,`44 zł`,`54 zł`];
+
+/* RENDER */
+const tabsEl=document.getElementById('tabs');
+NAV.forEach(([id,label])=>{const b=document.createElement('button');b.textContent=label;b.dataset.id=id;b.onclick=()=>tab(id);tabsEl.appendChild(b);});
+function tab(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===id));
+  document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('active',b.dataset.id===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+  setTimeout(revealScan,60);
+}
+document.getElementById('gallery').innerHTML=GALLERY.map(g=>`<img src="zdjecia/${g}" alt="Yoga Academy" loading="lazy">`).join('');
+document.getElementById('classes').innerHTML=CLASSES.map((c,i)=>`<div class="card hoverable" onclick="openClass(${i})"><div class="tag">${c.lvl}</div><h3>${c.t}</h3><p>${c.d}</p><p style="margin-top:10px;font-weight:600;color:var(--sage-d);font-size:.85rem">Czytaj więcej →</p></div>`).join('');
+document.getElementById('team').innerHTML=TEAM.map((p,i)=>`<div class="team-card" onclick="openPerson(${i})"><div class="ph"><img src="zdjecia/${p.img}" alt="${p.name}" loading="lazy"></div><div class="b"><h3>${p.name}</h3><div class="role">${p.role}</div><div class="intro">${p.intro}</div></div></div>`).join('');
+document.getElementById('wiedzaCards').innerHTML=WIEDZA.map(([tag,t,d])=>`<div class="card"><div class="tag">${tag}</div><h3>${t}</h3><p>${d}</p></div>`).join('');
+document.getElementById('sigs').innerHTML=SIGS.map(([c,who,t,d])=>`<div class="sig"><div class="code">${c}</div><div class="who">${who}</div><h3>${t}</h3><p>${d}</p></div>`).join('');
+document.getElementById('steps').innerHTML=STEPS.map(([n,t,d])=>`<div class="step"><div class="n">${n}</div><div><h3>${t}</h3><p>${d}</p></div></div>`).join('');
+document.getElementById('ebooks').innerHTML=EBOOKS.map((e,i)=>`<div class="ebook" onclick="openEbook(${i})"><div class="num">EBOOK ${String(i+1).padStart(2,'0')} · <span style="color:var(--sage-d)">${EPRICE[i]}</span></div><h3>${e[0]}</h3><div class="aut">✍️ ${e[1]}</div><div class="peek">Zobacz spis treści →</div></div>`).join('');
+document.getElementById('shop').innerHTML=SHOP.map(([img,n,cat,d,pr])=>`<div class="prod"><div class="img" style="padding:0"><img src="zdjecia/produkty/${img}" alt="${n}" style="width:100%;height:100%;object-fit:cover"></div><div class="b"><div class="tag">${cat}</div><h3>${n}</h3><div class="desc">${d}</div><div class="row"><span class="price">${pr}</span><button onclick="tab('kontakt')">Zapytaj</button></div></div></div>`).join('');
+
+const bg=document.getElementById('modalBg'),mo=document.getElementById('modal');
+function openPerson(i){const p=TEAM[i];
+  mo.innerHTML=`<button class="close" onclick="closeModal()">✕</button><div class="head"><img src="zdjecia/${p.img}" alt="${p.name}"><div><h2>${p.name}</h2><div class="role">${p.role}</div><div class="chips">${p.chips.map(c=>`<span class="chip">${c}</span>`).join('')}</div></div></div><div class="body">${p.bio}<h4>Czego mogłeś nie wiedzieć</h4><ul>${p.extra.map(x=>`<li>${x}</li>`).join('')}</ul>${p.links.length?`<div class="links">${p.links.map(l=>`<a href="${l[1]}" target="_blank">↗ ${l[0]}</a>`).join('')}</div>`:''}</div>`;
+  bg.classList.add('open');document.body.style.overflow='hidden';}
+function openEbook(i){const e=EBOOKS[i];
+  mo.innerHTML=`<button class="close" onclick="closeModal()">✕</button><div class="head" style="background:var(--sand)"><div><div class="tag gold">Ebook ${String(i+1).padStart(2,'0')} · spis treści</div><h2>${e[0]}</h2><div class="role" style="color:var(--gold)">✍️ ${e[1]} · dla: ${e[2]}</div></div></div><div class="body"><ol style="margin-left:18px;line-height:2">${e[3].map(c=>`<li>${c}</li>`).join('')}</ol><p style="margin-top:14px;color:var(--muted);font-size:.9rem">Pełna treść w przygotowaniu — to proponowany spis treści do rozpisania.</p><button class="btn btn-gold" onclick="tab('kontakt');closeModal()">Chcę ten ebook — ${EPRICE[i]}</button></div>`;
+  bg.classList.add('open');document.body.style.overflow='hidden';}
+function openClass(i){const c=CLASSES[i];
+  mo.innerHTML=`<button class="close" onclick="closeModal()">✕</button><div class="head" style="background:var(--sage-tint)"><div><div class="tag">${c.lvl}</div><h2>${c.t}</h2></div></div><div class="body">${c.full}<h4>Dla kogo?</h4><p style="color:var(--muted)">${c.dla}</p><h4>Co Ci to daje</h4><ul>${c.ben.map(b=>`<li>${b}</li>`).join('')}</ul><button class="btn btn-primary" onclick="tab('kontakt');closeModal()">Zapisz się — zapytaj o termin</button></div>`;
+  bg.classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(){bg.classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+/* REVEAL on scroll */
+const io=new IntersectionObserver((es)=>{es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.12});
+function revealScan(){document.querySelectorAll('.panel.active .reveal:not(.in)').forEach(el=>io.observe(el));}
+revealScan();
+
+/* SCROLL PROGRESS + NAV SHRINK */
+const prog=document.getElementById('progress'),navEl=document.querySelector('nav');
+addEventListener('scroll',()=>{const h=document.documentElement;prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';navEl.classList.toggle('shrunk',h.scrollTop>80);},{passive:true});
+
+/* COUNT-UP statystyk */
+const ioN=new IntersectionObserver(es=>{es.forEach(x=>{if(!x.isIntersecting)return;ioN.unobserve(x.target);const el=x.target,end=+el.dataset.n,t0=performance.now();
+  (function f(t){const p=Math.min((t-t0)/1400,1);el.textContent=Math.round(end*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f);})(t0);});},{threshold:.5});
+document.querySelectorAll('.stat .n').forEach(el=>ioN.observe(el));
+
+/* LIGHTBOX galerii */
+const lb=document.createElement('div');lb.className='lb';lb.innerHTML='<img>';document.body.appendChild(lb);
+lb.onclick=()=>lb.classList.remove('open');
+document.getElementById('gallery').addEventListener('click',e=>{if(e.target.tagName==='IMG'){lb.querySelector('img').src=e.target.src;lb.classList.add('open');}});
+</script>
+</body>
+</html>

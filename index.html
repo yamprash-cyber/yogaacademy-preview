@@ -566,9 +566,29 @@
   </div></section>
 
   <section class="reveal soft"><div class="wrap">
-    <div class="sec-head"><div class="eyebrow">Wdrożenie</div><h2>5 następnych kroków dla strony</h2>
-      <p>Ta strona to prototyp kierunku. Tak proponujemy doprowadzić ją do wersji sprzedażowej.</p></div>
+    <div class="sec-head"><div class="eyebrow">Plan wdrożenia</div><h2>Priorytet według szybkości gotówki</h2>
+      <p>Nie „wszystko naraz”, tylko kolejność, w której każdy krok finansuje następny. Zaczynamy od tego, co przynosi pieniądze najszybciej i wymaga najmniej nowej pracy.</p></div>
     <div id="steps"></div>
+
+    <div class="grid g2" style="margin-top:40px">
+      <div class="card" style="border-left:4px solid var(--clay)">
+        <div class="tag clay">Uczciwie · nie sprzedajemy tego</div>
+        <h3>Karty sportowe</h3>
+        <p style="margin-top:8px">W branży karty typu Multisport odpowiadają za znaczną część wejść do obiektów — to realne pieniądze. Ale Wy <b>świadomie ich nie honorujecie</b>, i to jest spójna decyzja: kameralność i uważna praktyka bywają warte więcej niż dodatkowy ruch. Zostawiamy to jako <b>opcję, nie rekomendację</b>. Decyzja należy do Was i tylko do Was.</p>
+      </div>
+      <div class="card" style="border-left:4px solid var(--clay)">
+        <div class="tag clay">Uczciwie · to hipoteza, nie fakt</div>
+        <h3>Zwolnienie z VAT</h3>
+        <p style="margin-top:8px">Kształcenie zawodowe bywa zwolnione z VAT — przy kursie za 9 500 zł oznaczałoby to istotną różnicę w marży bez podnoszenia ceny. <b>Ale to hipoteza podatkowa, nie ustalony fakt.</b> Wymaga potwierdzenia u księgowej i radcy, zanim cokolwiek obiecacie kursantom. Wolimy powiedzieć to wprost, niż sprzedać Wam obietnicę.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="reveal"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Krok 1 w praktyce</div><h2>Systemy rezerwacji dostępne w Polsce</h2>
+      <p>Sprawdziliśmy realne rozwiązania, z których korzystają polskie studia jogi — z cenami, funkcjami i tym, czy obsłużą także sprzedaż kursu za 9 500 zł na raty.</p></div>
+    <div class="grid g3" id="rezGrid"></div>
+    <div class="card soft" style="margin-top:26px" id="rezRek"></div>
   </div></section>
   <section class="reveal"><div class="wrap"><div class="band">
     <h2>Porozmawiajmy o rozwoju szkoły</h2>
@@ -835,12 +855,31 @@ const SIGS=[
 ];
 
 const STEPS=[
- [`1`,`Rezerwacja i płatności online`,`Wdrożyć system grafiku/rezerwacji (np. Fitssey, eFitness, Momence) i płatność online — koniec „karnet tylko na miejscu”. To warunek skalowania i mniejsza liczba nieobecności.`],
- [`2`,`Zakładka „Możliwości” jako oferta live`,`Zamienić prezentowane tu produkty sygnaturowe (S1–S10) w realne strony zapisów z terminami, cenami i formularzem — najpierw 2–3 pilotaże (Reset Układu Nerwowego, Ruch bez bólu, Koncert-Praktyka).`],
- [`3`,`Biblioteka ebooków i lejek`,`Opublikować pierwsze 3 ebooki (darmowy „Pierwsza joga” jako lead-magnet, dalej płatne przewodniki). Zapis mailowy zasila newsletter i automatyczny lejek pozyskiwania klientów.`],
- [`4`,`Sklep i produkty cyfrowe`,`Podpiąć realny koszyk (obecnie makieta) do akcesoriów, voucherów, ebooków i audio (Nidra, medytacje) — dodatkowy, wysokomarżowy przychód spójny z klimatem.`],
- [`5`,`Reaktywacja mediów i treści`,`Regularny format na YouTube (playlisty PL-SEO, mini-klasy dla początkujących) plus podcast wpięty w stronę. Darmowy content buduje zaufanie i prowadzi do płatnych ścieżek.`],
+ [`1`,`System rezerwacji i płatności online`,`<b>Najszybszy zwrot z całego audytu.</b> Dziś „przychodzisz i wchodzisz” — to zero danych, zero prognozy i pieniądze, które przeciekają przez palce. To nie nowy produkt: to <b>zafakturowanie ruchu, który już jest w sali</b>. Wdrożenie systemu z płatnościami online kończy erę „karnet tylko na miejscu” i daje pierwsze prawdziwe liczby o szkole. Konkretne rozwiązania — niżej.`],
+ [`2`,`Powtórki i egzaminy poprawkowe`,`Próg 80% na egzaminie kursu nauczycielskiego tworzy stały, przewidywalny strumień osób chcących wrócić. Powtórka edycji za 1 500–2 500 zł (zamiast 9 500 zł) i poprawka egzaminu — przy koszcie krańcowym bliskim zeru, bo sala i tak jest wynajęta, a prowadzący i tak uczy.`],
+ [`3`,`Moduły YACEP otwarte dla nauczycieli`,`Osiem zjazdów kursu sprzedawanych osobno osobom z zewnątrz (900–1 400 zł za weekend). Popyt jest tu <b>obowiązkowy, nie uznaniowy</b>: Yoga Alliance wymaga od każdego nauczyciela 30 godzin doszkalających co trzy lata — a w Polsce są ich tysiące i nikt nie oferuje im ciężkich, akademickich modułów.`],
+ [`4`,`Dofinansowania BUR / KFS`,`Wpis do rejestru instytucji szkoleniowych otwiera kursantom drogę do dofinansowania: kurs za 9 500 zł może kosztować ich realnie 2–3 tysiące. Nabór 24 osób przestaje być sufitem, a zaczyna być listą oczekujących. <b>Uwaga:</b> kwestia zwolnienia z VAT dla kształcenia zawodowego to hipoteza wymagająca potwierdzenia u księgowej i radcy — nie obiecujcie tego kursantom przed weryfikacją.`],
+ [`5`,`Reszta portfela — kolejność wg gotowości`,`Asystentura płatna dla absolwentów · licencja programu dla innych szkół (25–40 tys. zł wejścia plus opłata od kursanta) · podręcznik jako książka · szkoła marki dla nauczycieli · sieć absolwentów · certyfikacja korporacyjna · pielgrzymka do Mysore · Rolfing sprzedawany jako pełna seria dziesięciu sesji. Każdy z tych działów opisaliśmy wyżej — z rozpisaniem, jak go uruchomić i komu sprzedać.`],
 ];
+const REZ=[
+ {tag:`Rekomendacja #1`,t:`Fitssey`,cena:`Model „płacisz za to, czego używasz”: <b>do 50 rezerwacji miesięcznie za darmo</b>. Dalej: 101–150 rezerwacji ≈ 60 zł, 151–200 ≈ 64 zł (netto). <b>Bez umowy</b> — wypowiedzenie mailem.`,
+  plus:[`Polski system z <b>dedykowanym produktem dla szkół jogi</b> — nie przerobiona siłownia`,`Płatności natywnie w złotówkach: <b>BLIK, karty, Apple/Google Pay</b>`,`<b>Lista rezerwowa</b> z automatycznym awansem, gdy ktoś odwoła`,`Kaucje przeciw nieobecnościom, auto-odwoływanie zajęć przy zbyt małej frekwencji`,`Karnety, wejściówki, członkostwa cykliczne, <b>warsztaty i wyjazdy</b>`,`Aplikacja mobilna dla klientów, newsletter, SMS i push — w cenie`,`Realnie używany przez polskie studia jogi`],
+  minus:[`Publiczny cennik kończy się na 200 rezerwacjach. Przy Waszej skali (7 nauczycieli) będzie ich <b>znacznie więcej</b> — <b>tej ceny nie ustaliliśmy</b>. Szacunek: rząd 100–200 zł netto, ale to nasza estymacja, nie oficjalne źródło. To pytanie nr 1 do nich.`],
+  dla:`Wybór domyślny. Jedyny system z udokumentowanym profilem szkoły jogi w Polsce i żywymi referencjami z branży. Model per-rezerwacja pasuje do kameralnego studia: przy pustym miesiącu płacicie zero. Wdrożenie: 1–2 tygodnie, konto zakłada się w kilkadziesiąt sekund.`},
+ {tag:`Alternatywa`,t:`eFitness`,cena:`Plan Studio: <b>249 zł netto/mc</b> (lub 149 zł netto/mc przy płatności rocznej z góry) + 100 zł aktywacji. Wyższe plany od 300 zł, a integracja z kartami sportowymi dopiero od ok. 700 zł/mc.`,
+  plus:[`Polska firma <b>z Poznania</b> — opiekun wdrożenia, umowa, wsparcie na miejscu`,`Fakturowanie zgodne z KSeF „z pudełka”`,`CRM, automatyzacja e-mail i SMS, moduł windykacji, API`],
+  minus:[`Produkt pisany <b>pod siłownie i kluby</b>, nie pod butikowe studio jogi`,`Umowy na 24 miesiące w wyższych planach — realny lock-in`,`Kilkakrotnie drożej niż Fitssey przy Waszej skali`],
+  dla:`Ma sens, jeśli świadomie chcecie polską firmę z Poznania, umowę i człowieka od wdrożenia — i akceptujecie, że płacicie za funkcje sieci klubów, których nie użyjecie.`},
+ {tag:`Ryzyko`,t:`Momence`,cena:`Plan darmowy, ale z prowizją 5% od studia i 4% od klienta. Pro: ok. 60 USD/mc + 2,5% prowizji. Bez prowizji dopiero od ok. 199 USD/mc.`,
+  plus:[`Najlepszy na świecie system „yoga-first” — zbudowany dokładnie pod ten biznes`,`Kursy, warsztaty, wideo on-demand i membership w jednym miejscu`,`Bardzo silne automatyzacje marketingowe`],
+  minus:[`⛔ <b>Nie potwierdziliśmy obsługi złotówek, BLIK-a ani polskiego wsparcia</b> — opłaty podane są tylko dla USA, Wielkiej Brytanii, Australii i Kanady`,`Prowizja od transakcji przy kursie za 9 500 zł to realny koszt`],
+  dla:`Dopóki nie potwierdzi się obsługa PLN i BLIK — traktujemy to jako <b>ryzyko, nie rekomendację</b>. Wróćcie do tego, jeśli sprzedaż online (kursy wideo, membership) urośnie do dużej części przychodu.`},
+];
+const REZREK=`<div class="tag gold">Nasza rekomendacja</div>
+<h3 style="font-size:1.35rem;margin:6px 0 12px">Zacznijcie od Fitssey — dziś, bez ryzyka i bez umowy</h3>
+<p style="margin-bottom:12px">Pierwsze 50 rezerwacji nie kosztuje nic, nie ma umowy, nie ma wdrożeniowca. To znaczy, że <b>nie musicie w to wierzyć — możecie to po prostu sprawdzić</b>: jedno pasmo zajęć, jeden miesiąc, zero ryzyka. A ponieważ Fitssey ma listę rezerwową i kaucje przeciw nieobecnościom, rozwiązuje dokładnie te dwa problemy, które macie dziś: pełne zajęcia, na które ktoś nie dotarł, i puste, o których nikt nie wiedział.</p>
+<p style="margin-bottom:12px"><b>Kolejność wdrożenia:</b> (1) wpiąć grafik i rezerwacje na jedno pasmo, (2) po miesiącu spojrzeć na liczby — ilu ludzi, ile pustych miejsc, ile nieobecności, (3) dopiero wtedy włączyć płatności online i abonament premium z gwarantowanym miejscem. Realny czas: <b>tydzień–dwa, nie kwartał</b>.</p>
+<p style="font-size:.9rem;color:var(--muted)"><b>Uczciwie, czego nie wiemy:</b> ceny Fitssey powyżej 200 rezerwacji miesięcznie nie są publiczne — a Wy przekroczycie ten próg. Nie wiemy też, czy którykolwiek z tych systemów obsłuży <b>raty przy kursie za 9 500 zł</b>; realistycznie taki kurs i tak sprzedaje się poza systemem (umowa, faktura, przelew) — więc nie robilibyśmy z tego kryterium wyboru. To dwa telefony do wykonania, nie powód do zwłoki.</p>`;
 
 const EBOOKS=[
  [`Pierwsza joga w życiu — przewodnik dla zupełnie początkujących`,`zespół Yoga Academy`,`Osoby, które nigdy nie były na jodze`,[`Czym joga jest, a czym nie jest — obalamy 7 mitów`,`Czego potrzebujesz na start (i czego NIE)`,`Pierwsze wejście do studia — jak się zachować`,`10 podstawowych pozycji krok po kroku`,`Oddech, który uspokaja — ujjayi dla początkujących`,`Twoje pierwsze 30 dni praktyki (plan)`,`Jak wybrać zajęcia dla siebie`]],
@@ -1081,6 +1120,8 @@ function faqToggle(i){const a=document.getElementById('fa'+i),s=document.getElem
 document.getElementById('mktGrid').innerHTML=MKT.map((x,i)=>`<div class="fut hoverable wcard" style="animation-delay:${i*0.1}s" onclick="openIdea('mkt',${i})"><div class="tag">⚙️ ${x.tag}</div><h3>${x.t}</h3><p>${x.d}</p><p style="margin-top:10px;font-weight:600;color:var(--sage-d);font-size:.85rem">Jak to działa? →</p></div>`).join('');
 document.getElementById('audio').innerHTML=AUDIO.map((x,i)=>`<div class="card hoverable wcard" style="animation-delay:${i*0.12}s" onclick="openIdea('audio',${i})"><div class="tag clay">🎧 ${x.tag}</div><h3>${x.t}</h3><p>${x.d}</p><p style="margin-top:10px;font-weight:600;color:var(--clay);font-size:.85rem">Jak to zrobić i sprzedać? →</p></div>`).join('');
 document.getElementById('steps').innerHTML=STEPS.map(([n,t,d])=>`<div class="step"><div class="n">${n}</div><div><h3>${t}</h3><p>${d}</p></div></div>`).join('');
+document.getElementById('rezGrid').innerHTML=REZ.map(r=>`<div class="card" style="border-top:4px solid var(--sage);display:flex;flex-direction:column"><div class="tag">${r.tag}</div><h3 style="font-size:1.4rem">${r.t}</h3><p style="margin:10px 0 14px;color:var(--ink)">${r.cena}</p><div style="font-size:.88rem"><b style="color:var(--sage-d)">Za:</b><ul style="margin:6px 0 12px 18px;color:var(--muted)">${r.plus.map(p=>`<li style="margin-bottom:4px">${p}</li>`).join('')}</ul><b style="color:var(--clay)">Przeciw / niewiadome:</b><ul style="margin:6px 0 12px 18px;color:var(--muted)">${r.minus.map(p=>`<li style="margin-bottom:4px">${p}</li>`).join('')}</ul></div><p style="font-size:.9rem;margin-top:auto;padding-top:10px;border-top:1px solid var(--line)">${r.dla}</p></div>`).join('');
+document.getElementById('rezRek').innerHTML=REZREK;
 document.getElementById('ebooks').innerHTML=EBOOKS.map((e,i)=>`<div class="ebook" onclick="openEbook(${i})"><div class="num">EBOOK ${String(i+1).padStart(2,'0')} · <span style="color:var(--sage-d)">${EPRICE[i]}</span></div><h3>${e[0]}</h3><div class="aut">✍️ ${e[1]}</div><div class="peek">Zobacz spis treści →</div></div>`).join('');
 document.getElementById('shop').innerHTML=SHOP.map(([img,n,cat,d,pr])=>`<div class="prod"><div class="img" style="padding:0"><img src="zdjecia/produkty/${img}" alt="${n}" style="width:100%;height:100%;object-fit:cover"></div><div class="b"><div class="tag">${cat}</div><h3>${n}</h3><div class="desc">${d}</div><div class="row"><span class="price">${pr}</span><button onclick="tab('kontakt')">Zapytaj</button></div></div></div>`).join('');
 

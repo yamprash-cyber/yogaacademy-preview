@@ -343,8 +343,14 @@
 <div class="panel" id="ebooki">
   <section class="reveal"><div class="wrap">
     <div class="sec-head"><div class="eyebrow">Biblioteka · 20 tytułów</div><h2>Ebooki — kliknij, by zobaczyć spis treści</h2>
-      <p>Przewodniki głębsze niż u konkurencji — każdy pisany przez osobę z zespołu w jej dziedzinie. Produkt cyfrowy: edukuje, buduje autorytet i jest pasywnym źródłem przychodu.</p></div>
+      <p>Przewodniki głębsze niż u konkurencji — każdy pisany przez osobę z zespołu w jej dziedzinie. Produkt cyfrowy: edukuje, buduje autorytet i jest pasywnym źródłem przychodu. Każdy tytuł może powstać także jako <b>audiobook</b> — czytany głosem autorki lub autora.</p></div>
     <div class="grid g3" id="ebooks"></div>
+  </div></section>
+
+  <section class="reveal soft"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Nowe · słuchaj zamiast czytać</div><h2>Audiobooki i praktyki audio</h2>
+      <p>Joga to praktyka ciała — trudno ćwiczyć z książką w ręku. Dlatego każdy przewodnik ma naturalną drugą postać: <b>audio</b>, którego słuchasz na macie, w drodze albo zasypiając. To ten sam materiał, drugi produkt i drugi strumień przychodu — bez pisania ani jednej nowej strony.</p></div>
+    <div class="grid g3" id="audio"></div>
   </div></section>
 </div>
 
@@ -675,6 +681,8 @@ const SHOP=[
  [`prod_ebook1.jpg`,`Ebook „Pierwsza joga w życiu”`,`Cyfrowe`,`Przewodnik dla początkujących w PDF. Idealny na start.`,`gratis`],
  [`prod_ebook2.jpg`,`Ebook „Powięź — instrukcja obsługi ciała”`,`Cyfrowe`,`Pogłębiony przewodnik Mateusza Dekera (PDF).`,`49 zł`],
  [`prod_audio.jpg`,`Audio: Joga Nidra na sen`,`Cyfrowe`,`Nagranie prowadzone przez Gosię — głębokie wyciszenie.`,`39 zł`],
+ [`prod_audiobook.jpg`,`Audiobook „Powięź — instrukcja obsługi ciała”`,`Audiobook`,`Czytany przez autora, Mateusza Dekera. 4 godziny słuchania.`,`79 zł`],
+ [`prod_audiopack.jpg`,`Pakiet audio: 3 medytacje prowadzone`,`Audiobook`,`Reset w 10 minut · Oddech przed snem · Nidra na sen.`,`59 zł`],
  [`prod_koncert.jpg`,`Bilet: Koncert-Praktyka`,`Wydarzenia`,`Wieczór jogi z fortepianem na żywo (Weronika).`,`89 zł`],
 ];
 const DUSZA=[
@@ -751,6 +759,20 @@ const ONLINE=[
   komu:`Subskrypcja — uczniom rozproszonym po kraju i za granicą oraz tym, których stać na 49 zł, ale nie na czas dojazdu. Warsztaty CEU — nauczycielom jogi, którzy MUSZĄ zbierać godziny doszkalające (Yoga Alliance wymaga 30h co 3 lata). Licencje audio — hotelom i spa.`,
   rynek:`Subskrypcyjny wellness po polsku wciąż raczkuje — globalne platformy nie mają lokalnej relacji ani języka. Dwustu subskrybentów (realny cel pierwszego roku dla szkoły z żywą społecznością) to stabilne ~10 tys. zł miesięcznie przychodu odpornego na sezon i pogodę.`},
 ];
+const AUDIO=[
+ {tag:`Audiobook`,t:`Biblioteka audiobooków — 20 tytułów`,d:`Każdy z 20 przewodników w wersji do słuchania, czytany głosem autorki lub autora. Cena 59–89 zł za tytuł, pakiet całości 449 zł.`,
+  jak:`Tekst ebooka już istnieje — audiobook to jego druga postać, nie nowa praca autorska. Nagranie odbywa się w jeden dzień na tytuł: autor czyta własny tekst (to ważne — słuchacz kupuje głos nauczyciela, którego zna z maty), reszta to montaż i mastering. Tam, gdzie nagranie ludzkie jest niemożliwe lub nieopłacalne, syntezę głosu wykonuje się narzędziem AI klonującym barwę autora — z jawną informacją dla słuchacza. Sprzedaż: własny sklep na stronie (najwyższa marża) plus dystrybucja do Audioteki, Legimi, Storytel i Spotify, gdzie dochód jest niższy, ale zasięg ogromny.`,
+  komu:`Osobom, które nie mają czasu czytać, ale mają 40 minut w samochodzie, na spacerze albo przy gotowaniu. Praktykującym, którzy chcą słuchać instrukcji zamiast zerkać w kartkę. Klientom 45+, dla których czytanie z ekranu jest męczące. To także naturalny prezent — audiobook o śnie kupuje się komuś, kto nie sypia.`,
+  rynek:`Audiobooki to najszybciej rosnący segment rynku książki w Polsce — rosną, gdy sprzedaż papieru stoi w miejscu, a subskrypcje (Legimi, Storytel, Empik Go) przyzwyczaiły miliony ludzi do słuchania. Poradniki i literatura rozwojowa należą do najchętniej słuchanych kategorii. Kluczowe: audiobook wycenia się wyżej niż ebook (zwykle 1,5–2×), a koszt jego wytworzenia z gotowego tekstu jest dziś ułamkiem dawnego.`},
+ {tag:`Praktyki audio`,t:`Joga Nidra i medytacje prowadzone`,d:`Sesje do słuchania z zamkniętymi oczami: Nidra na sen, medytacje na stres, oddech przed snem. Paczki 39–59 zł, pojedyncze sesje w subskrypcji.`,
+  jak:`To najprostszy do wykonania i najszybciej sprzedający się produkt audio, bo Gosia i Iza prowadzą takie sesje na żywo co tydzień — wystarczy je nagrać porządnym mikrofonem. Zaczynacie od trzech pozycji: „Nidra na sen” (30 min), „Reset w 10 minut” i „Oddech przed snem”. Sprzedaż jako paczki na stronie, część udostępniona za darmo jako lead-magnet — darmowa Nidra to najskuteczniejszy sposób, by ktoś z drugiego końca Polski poznał głos szkoły.`,
+  komu:`Osobom z bezsennością i przewlekłym napięciem — to największa grupa odbiorców audio wellness. Uczniom, którzy chcą praktykować w domu wieczorem. Ludziom, którzy nigdy nie wejdą do studia jogi, ale zasną przy Nidrze i po roku przyjadą na retreat.`,
+  rynek:`Sen i redukcja stresu to najliczniej reprezentowane kategorie w aplikacjach wellness — Calm i Headspace zbudowały na nich biznesy warte miliardy, a polskiego, autorskiego odpowiednika o tej jakości praktycznie nie ma. Popyt jest gigantyczny, konkurencja lokalna znikoma, a materiał już istnieje na waszych zajęciach.`},
+ {tag:`Premium`,t:`Piano-Nidra: audio z muzyką na żywo`,d:`Sesje Nidry z fortepianem Weroniki, nagrane w dźwięku przestrzennym. Wersja cyfrowa 59 zł, winyl kolekcjonerski, licencje dla hoteli i spa.`,
+  jak:`Dwa dni w studiu nagraniowym: Weronika nagrywa kompozycje, Gosia prowadzi Nidrę, całość miksowana w dźwięku binauralnym (w słuchawkach dźwięk „krąży” wokół głowy — efekt, którego nie da się podrobić głośnikiem telefonu). Trzy kanały sprzedaży: cyfrowy (59 zł), fizyczny winyl jako produkt kolekcjonerski i prezentowy (250 zł) oraz licencje B2B — hotele butikowe i gabinety spa płacą abonament (ok. 400 zł/mc) za legalne, autorskie tło dźwiękowe.`,
+  komu:`Melomanom, którzy nie zniosą syntetycznej „muzyki relaksacyjnej”. Kolekcjonerom winyli. Osobom szukającym prezentu z klasą. A po stronie B2B — hotelom i spa, które chcą brzmieć inaczej niż konkurencja odtwarzająca ten sam plik z banku dźwięków.`,
+  rynek:`Sleep-audio liczy miliardy odtworzeń rocznie, ale niemal wszystko w tej kategorii jest anonimowe i generyczne. Nagranie zawodowej pianistki po międzynarodowych konkursach i scenach koncertowych to produkt fonograficzny z prawdziwego zdarzenia — raz wydany, zarabia latami i uwiarygadnia całą markę.`},
+];
 /* Ceny rynkowe ebooków PL (poradniki PDF 30-90 zł; lead-magnet gratis) */
 const EPRICE=[`gratis`,`44 zł`,`49 zł`,`49 zł`,`54 zł`,`39 zł`,`39 zł`,`34 zł`,`44 zł`,`39 zł`,`39 zł`,`39 zł`,`34 zł`,`44 zł`,`44 zł`,`44 zł`,`49 zł`,`39 zł`,`44 zł`,`54 zł`];
 
@@ -774,6 +796,7 @@ document.getElementById('sigs').innerHTML=SIGS.map(([c,who,t,d],i)=>`<div class=
 document.getElementById('duszaGrid').innerHTML=DUSZA.map((x,i)=>`<div class="card hoverable" onclick="openIdea('dusza',${i})"><div class="tag clay">${x.tag}</div><h3>${x.t}</h3><p>${x.d}</p><p style="margin-top:10px;font-weight:600;color:var(--clay);font-size:.85rem">Jak to sprzedać? →</p></div>`).join('');
 document.getElementById('futGrid').innerHTML=FUT.map((x,i)=>`<div class="fut hoverable" onclick="openIdea('fut',${i})"><div class="tag">${x.tag}</div><h3>${x.t}</h3><p>${x.d}</p><p style="margin-top:10px;font-weight:600;color:var(--sage-d);font-size:.85rem">Jak to sprzedać? →</p></div>`).join('');
 document.getElementById('onlineGrid').innerHTML=ONLINE.map((x,i)=>`<div class="card hoverable" onclick="openIdea('online',${i})"><div class="tag gold">${x.tag}</div><h3>${x.t}</h3><p>${x.d}</p><p style="margin-top:10px;font-weight:600;color:var(--gold);font-size:.85rem">Jak to sprzedać? →</p></div>`).join('');
+document.getElementById('audio').innerHTML=AUDIO.map((x,i)=>`<div class="card hoverable wcard" style="animation-delay:${i*0.12}s" onclick="openIdea('audio',${i})"><div class="tag clay">🎧 ${x.tag}</div><h3>${x.t}</h3><p>${x.d}</p><p style="margin-top:10px;font-weight:600;color:var(--clay);font-size:.85rem">Jak to zrobić i sprzedać? →</p></div>`).join('');
 document.getElementById('steps').innerHTML=STEPS.map(([n,t,d])=>`<div class="step"><div class="n">${n}</div><div><h3>${t}</h3><p>${d}</p></div></div>`).join('');
 document.getElementById('ebooks').innerHTML=EBOOKS.map((e,i)=>`<div class="ebook" onclick="openEbook(${i})"><div class="num">EBOOK ${String(i+1).padStart(2,'0')} · <span style="color:var(--sage-d)">${EPRICE[i]}</span></div><h3>${e[0]}</h3><div class="aut">✍️ ${e[1]}</div><div class="peek">Zobacz spis treści →</div></div>`).join('');
 document.getElementById('shop').innerHTML=SHOP.map(([img,n,cat,d,pr])=>`<div class="prod"><div class="img" style="padding:0"><img src="zdjecia/produkty/${img}" alt="${n}" style="width:100%;height:100%;object-fit:cover"></div><div class="b"><div class="tag">${cat}</div><h3>${n}</h3><div class="desc">${d}</div><div class="row"><span class="price">${pr}</span><button onclick="tab('kontakt')">Zapytaj</button></div></div></div>`).join('');
@@ -790,6 +813,7 @@ function openIdea(type,i){
   if(type==='sig'){const s=SIGS[i];x={tag:s[0]+' · '+s[1],t:s[2],d:s[3],...s[4]};eyebrow='Produkt sygnaturowy';accent='var(--sage-tint)';}
   else if(type==='dusza'){x=DUSZA[i];eyebrow='Produkt z duszą · '+x.tag;accent='var(--rose)';}
   else if(type==='fut'){x=FUT[i];eyebrow='Krok w przyszłość · '+x.tag;accent='var(--lav)';}
+  else if(type==='audio'){x=AUDIO[i];eyebrow='🎧 Audio · '+x.tag;accent='var(--rose)';}
   else{x=ONLINE[i];eyebrow='Sprzedaż online · '+x.tag;accent='var(--sand)';}
   mo.innerHTML=`<button class="close" onclick="closeModal()">✕</button>
   <div class="head" style="background:${accent}"><div><div class="tag">${eyebrow}</div><h2>${x.t}</h2></div></div>

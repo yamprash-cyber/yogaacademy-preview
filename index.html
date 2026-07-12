@@ -560,6 +560,12 @@
   </div></section>
 
   <section class="reveal soft"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Audyt II · to, czego nie widać na pierwszy rzut oka</div><h2>Największy ukryty kapitał: kurs nauczycielski</h2>
+      <p>Kurs 200h kosztuje <b>9 500 zł</b>, a edycja liczy <b>24 miejsca</b>. To najwyżej marżowy produkt w całym biznesie — ale prawdziwe pieniądze leżą nie w samym kursie, tylko <b>wokół niego i po nim</b>: w absolwentach, w programie jako własności intelektualnej i w tym, czego kursanci potrzebują nazajutrz po egzaminie. Poniżej 12 działów, których dziś nie ma w ofercie.</p></div>
+    <div class="grid g4" id="noweGrid"></div>
+  </div></section>
+
+  <section class="reveal soft"><div class="wrap">
     <div class="sec-head"><div class="eyebrow">Wdrożenie</div><h2>5 następnych kroków dla strony</h2>
       <p>Ta strona to prototyp kierunku. Tak proponujemy doprowadzić ją do wersji sprzedażowej.</p></div>
     <div id="steps"></div>
@@ -949,6 +955,56 @@ const ONLINE=[
   komu:`Subskrypcja — uczniom rozproszonym po kraju i za granicą oraz tym, których stać na 49 zł, ale nie na czas dojazdu. Warsztaty CEU — nauczycielom jogi, którzy MUSZĄ zbierać godziny doszkalające (Yoga Alliance wymaga 30h co 3 lata). Licencje audio — hotelom i spa.`,
   rynek:`Subskrypcyjny wellness po polsku wciąż raczkuje — globalne platformy nie mają lokalnej relacji ani języka. Dwustu subskrybentów (realny cel pierwszego roku dla szkoły z żywą społecznością) to stabilne ~10 tys. zł miesięcznie przychodu odpornego na sezon i pogodę.`},
 ];
+const NOWE=[
+ {tag:`Cash-now`,t:`System rezerwacji — przychód, który już macie`,d:`Dziś ludzie po prostu przychodzą i wchodzą. To piękne — ale oznacza zero danych, zero prognozy i pieniądze, które przeciekają przez palce.`,
+  jak:`Wdrożenie prostego systemu rezerwacji zmienia trzy rzeczy naraz. Po pierwsze — wiecie, ilu ludzi przyjdzie, więc nikt nie prowadzi zajęć dla trzech osób ani nie odsyła nikogo z braku miejsca. Po drugie — pojawia się miejsce na abonament premium z gwarantowanym miejscem na najpopularniejszych zajęciach (dopłata rzędu 40 zł miesięcznie). Po trzecie — zaczynacie wreszcie widzieć, które zajęcia zarabiają, a które dokładają. To nie nowy produkt: to zafakturowanie ruchu, który już jest w Waszej sali.<br><br>Osobna, w pełni Wasza decyzja: karty sportowe. W całej branży odpowiadają one za znaczną część wejść, ale świadomie ich nie honorujecie — i rozumiemy dlaczego. Zostawiamy to jako możliwość, nie rekomendację: kameralność bywa warta więcej niż dodatkowy ruch.`,
+  komu:`Wam samym — to jedyny pomysł w całym audycie, który nie wymaga nowego klienta, nowej oferty ani nowej pracy. Wystarczy przestać tracić to, co już się dzieje.`,
+  rynek:`Studia ruchu, które wprowadzają rezerwacje, niemal zawsze odkrywają dwie rzeczy: że część zajęć jest przepełniona, a część pusta — i że nigdy wcześniej nie potrafiły tego zobaczyć. To najszybszy zwrot w całym zestawieniu.`},
+ {tag:`Po kursie`,t:`Asystentura — płatna droga do pierwszej pracy`,d:`Absolwent z dyplomem, ale bez godzin przy grupie, jest bezrobotny. Sprzedajecie mu to, czego naprawdę potrzebuje: dostęp do sali i mentora.`,
+  jak:`Semestralna ścieżka asystencka dla absolwentów: asystowanie przy regularnych zajęciach i przy kolejnej edycji kursu, obserwacja, feedback po każdej lekcji, mentoring indywidualny. Cena rzędu 2 400–3 900 zł za semestr. Przy 24 osobach w edycji i realistycznej konwersji to kilkoro chętnych rocznie — bez żadnego dodatkowego marketingu, bo kupują to ludzie, którzy już Wam zaufali.`,
+  komu:`Świeżym absolwentom, którzy boją się stanąć przed grupą. Płacą nie za wiedzę — tę już mają — tylko za bezpieczne wejście do zawodu pod okiem kogoś z autorytetem.`,
+  rynek:`Większość szkół na świecie oferuje asystenturę jako darmowy wolontariat i po prostu oddaje ten przychód. Tymczasem to najbardziej naturalny upsell, jaki istnieje: kurs kosztował 9 500 zł, a bez godzin praktyki jest niepełny.`},
+ {tag:`Po kursie`,t:`Powtórki, poprawki i pojedyncze zjazdy`,d:`Egzamin wymaga 80% — a to oznacza stały, przewidywalny strumień osób, które chcą wrócić i poprawić.`,
+  jak:`Trzy proste produkty dla absolwentów: powtórka całej edycji za ułamek pierwotnej ceny (1 500–2 500 zł zamiast 9 500 zł), egzamin poprawkowy (250–400 zł) oraz pojedynczy zjazd „na dobicie” tematu, który komuś umknął (ok. 600 zł). Koszt krańcowy jest bliski zeru — sala i tak jest wynajęta, prowadzący i tak uczy.`,
+  komu:`Absolwentom, którzy nie dopięli egzaminu, i tym, którzy po roku uczenia chcą wrócić i przejść materiał jeszcze raz — tym razem rozumiejąc znacznie więcej.`,
+  rynek:`To działa wyłącznie tam, gdzie egzamin jest prawdziwy. Szkoły, w których „każdy dostaje certyfikat”, nie mają czego poprawiać — Wasz próg 80% jest tu przewagą, nie utrudnieniem.`},
+ {tag:`Nauczyciele`,t:`Moduły otwarte i godziny doszkalające`,d:`Każdy z ośmiu zjazdów kursu może zostać sprzedany osobno — nauczycielom z innych szkół w całej Polsce.`,
+  jak:`Otwieracie wybrane weekendy kursu dla osób z zewnątrz (900–1 400 zł za zjazd). Największy popyt będą miały moduły, których nikt inny nie potrafi poprowadzić: anatomia i taśmy powięziowe u magistra fizjoterapii oraz filozofia u doktoranta filozofii. Uczestnicy dostają jednocześnie godziny doszkalające wymagane przez Yoga Alliance.`,
+  komu:`Tysiącom certyfikowanych nauczycieli w Polsce, którzy muszą co trzy lata zebrać godziny doszkalające — i najczęściej robią to na przypadkowych, płytkich webinarach, bo nie mają lepszego wyboru.`,
+  rynek:`Popyt jest tu obowiązkowy, nie uznaniowy — to rzadkość. A ciężkich, akademickich modułów w Polsce praktycznie nikt tym ludziom nie sprzedaje.`},
+ {tag:`IP`,t:`Licencja programu dla innych szkół`,d:`Wasz kurs to gotowy produkt: sylabus, skrypt, egzaminy, akredytacja. Można go sprzedawać szkołom w innych miastach.`,
+  jak:`Pakiet licencyjny: program, materiały, egzaminy i przeszkolenie ich trenerów. Model sprawdzony na świecie: opłata wejściowa (25–40 tys. zł), opłata od każdego kursanta oraz roczne odnowienie licencji. Naturalne kierunki: Kraków, Wrocław, Trójmiasto, a dalej Praga i Wilno.`,
+  komu:`Studiom, które chcą prowadzić kurs nauczycielski, ale nie mają ani programu, ani nazwiska, które go obroni. Kupują akredytację i autorytet — nie plik PDF.`,
+  rynek:`Na świecie licencjonowanie programów nauczycielskich to dojrzały biznes. W Polsce nie robi tego nikt — każde studio pisze program od zera i zwykle robi to źle.`},
+ {tag:`IP`,t:`Podręcznik — książka, nie skrypt`,d:`Kurs opiera się na 13 pozycjach literatury, w większości obcojęzycznej. W Polsce brakuje jednego nowoczesnego podręcznika anatomii i filozofii jogi.`,
+  jak:`Skrypt kursu przekształcony w prawdziwą książkę: anatomia i filozofia od Mateusza, redakcja i język od Gosi — dziennikarki i polonistki. Cena 149–249 zł, sprzedaż także osobom spoza kursu, docelowo wersja angielska. To produkt, który sprzedaje szkołę, nawet gdy śpicie.`,
+  komu:`Kursantom (jako materiał obowiązkowy), nauczycielom z innych szkół, studentom fizjoterapii i wszystkim, którzy chcą jednej porządnej książki zamiast trzynastu.`,
+  rynek:`Poważne wydawnictwo weźmie taki tytuł. Jesteście prawdopodobnie jedyną szkołą jogi w Polsce, która ma w zespole zawodową dziennikarkę — czyli potrafi napisać książkę, a nie skrypt w Wordzie.`},
+ {tag:`Marka`,t:`Szkoła marki dla nauczycieli`,d:`Uczycie kursantów marketingu i budowania marki osobistej. Skoro to potraficie — możecie to sprzedawać osobno.`,
+  jak:`Ośmiotygodniowy kurs dla instruktorów spoza akademii (1 900–2 900 zł): jak zbudować markę, prowadzić social media i zdobywać uczniów. Wersja premium: prowadzenie komunikacji absolwenta jako stała usługa (600–1 200 zł miesięcznie).`,
+  komu:`Nauczycielom jogi, którzy potrafią uczyć, ale nie potrafią się sprzedać — a to w tej branży niemal wszyscy. To jedyny element kursu z natychmiastowym zwrotem dla kursanta.`,
+  rynek:`Wiarygodność w tej dziedzinie ma tylko ten, kto sam ma zamknięty nabór i listę oczekujących. Wy macie — i to jest cały dowód, jakiego potrzebujecie.`},
+ {tag:`Sieć`,t:`Sieć absolwentów`,d:`Każda edycja powiększa sieć ludzi, którzy chwalą się Waszym dyplomem. Ta sieć może zacząć na siebie zarabiać.`,
+  jak:`Trzy elementy: płatny wpis do katalogu „Nauczyciel Yoga Academy” (300–600 zł rocznie), prowizja od zapytań korporacyjnych i eventowych przekazywanych absolwentom, oraz licencja „Studio certyfikowane przez Yoga Academy” dla miejsc, które chcą się firmować Waszym standardem.`,
+  komu:`Absolwentom, którzy potrzebują widoczności i klientów. Oraz firmom, które szukają sprawdzonego nauczyciela i nie mają jak go zweryfikować.`,
+  rynek:`Sieć rośnie z każdą edycją i jest aktywem, którego nowa szkoła nie ma jak zbudować — bo nie ma absolwentów. Czas gra tu na Waszą korzyść.`},
+ {tag:`B2B`,t:`Certyfikacja nauczycieli firmowych`,d:`Zamiast wiecznie prowadzić zajęcia w firmie — nauczcie firmę prowadzić je samodzielnie. To zupełnie inny budżet.`,
+  jak:`Certyfikat „nauczyciel jogi biurowej” (ok. 20 godzin, 1 490 zł) dla osób indywidualnych. Wersja korporacyjna: szkolicie wewnętrznych ambasadorów ruchu w firmie (12–25 tys. zł za kohortę) plus roczna superwizja. Merytorycznie stoją za tym MBSR, terapia akceptacji i zaangażowania oraz fizjoterapia — argumenty, które przekonują nie tylko HR, ale i medycynę pracy.`,
+  komu:`Dużym pracodawcom Poznania (branża IT, finanse, produkcja), którzy chcą kompetencję u siebie, a nie kolejną fakturę za zajęcia. Budżet szkoleniowy to inna kieszeń niż budżet na benefity.`,
+  rynek:`Firma płaci raz za kompetencję zamiast bez końca za usługę — i właśnie dlatego chętniej sięga po wyższą kwotę. A obronić taki program przed działem BHP potrafi tylko zespół z fizjoterapeutą.`},
+ {tag:`Finanse`,t:`Dofinansowania: kurs za ułamek ceny`,d:`Kurs za 9 500 zł może kosztować kursanta 2–3 tysiące — jeśli szkoła wejdzie do rejestrów usług rozwojowych.`,
+  jak:`Wpis do rejestru instytucji szkoleniowych i Bazy Usług Rozwojowych otwiera kursantom-przedsiębiorcom drogę do dofinansowania znacznej części ceny, a pracodawcom — do środków na kształcenie pracowników. Do sprawdzenia z księgową i radcą jest też kwestia zwolnienia z VAT dla kształcenia zawodowego, co przy tej cenie ma istotne znaczenie dla marży.<br><br><b>Uczciwie:</b> to hipoteza administracyjno-podatkowa, nie gotowy fakt — wymaga potwierdzenia u specjalisty, zanim cokolwiek obiecacie kursantom.`,
+  komu:`Wszystkim, dla których 9 500 zł to bariera nie do przeskoczenia — a jest ich znacznie więcej niż tych 24, którzy się zapisują.`,
+  rynek:`To zmienia charakter oferty z luksusowej na refundowaną, nie ruszając ceny. Nabór 24 osób przestaje być sufitem, a zaczyna być listą oczekujących. Bariera administracyjna jest realna — i właśnie dlatego nie przeszła przez nią żadna szkoła jogi w Polsce.`},
+ {tag:`Podróż`,t:`Mysore — pielgrzymka studyjna`,d:`Trzytygodniowy wyjazd do źródła: praktyka w Indiach z nauczycielem, który ma autoryzację prosto od Sharatha Joisa.`,
+  jak:`Wyjazd studyjny dla kilkunastu osób (12–16 tys. zł od osoby): codzienna praktyka, kontekst kulturowy i filozoficzny, opieka nauczyciela z autoryzacją KPJAYI. Antropolożka z zespołu dokumentuje wyprawę — powstaje z tego materiał filmowy i fotoreportaż, który sam w sobie jest wartością.`,
+  komu:`Poważnym praktykującym Ashtangi, dla których podróż do Mysore jest naturalnym etapem drogi — i którzy nie chcą jechać tam sami, bez przewodnika.`,
+  rynek:`To nie retreat na plaży, tylko legitymizacja linii przekazu. Sprzedać to może wyłącznie ktoś z realną autoryzacją — a takich osób w Polsce są jednostki.`},
+ {tag:`Premium`,t:`Rolfing jako pełna seria + pakiet absolwenta`,d:`Najwyższa stawka godzinowa w całym portfolio — i praktycznie zero konkurencji w Polsce.`,
+  jak:`Rolfing sprzedawany nie jako pojedyncza sesja, lecz jako kanoniczna seria dziesięciu spotkań — to daje pacjentowi realny efekt, a gabinetowi przewidywalny przychód z jednego klienta. Osobno: pakiet startowy dla absolwentów (ubezpieczenie odpowiedzialności cywilnej, wzory umów i regulaminów) oraz współpraca z marką mat i sprzętu. Dziś rozdajecie sprzęt gratis — czyli finansujecie cudzy marketing zamiast na nim zarabiać.`,
+  komu:`Osobom z przewlekłym bólem i napięciem, dla których seria to jedyna droga do trwałej zmiany. Oraz absolwentom, którzy startują w zawodzie i nie wiedzą, jak się ubezpieczyć ani jaką umowę podpisać.`,
+  rynek:`Certyfikowanych Rolferów jest w Polsce kilkunastu. Zdobycie tej certyfikacji zajmuje lata i kosztuje dziesiątki tysięcy — nie da się jej po prostu zatrudnić w Poznaniu.`},
+];
 const MKT=[
  {tag:`Lejek`,t:`Automatyczna ścieżka nowego ucznia`,d:`Od pierwszego kliknięcia do karnetu — bez jednego telefonu wykonanego ręcznie. System prowadzi człowieka za rękę, Wy witacie go już na macie.`,
   jak:`Ktoś trafia na stronę, zapisuje się na pierwsze zajęcia i od tej chwili wszystko dzieje się samo: dostaje potwierdzenie, dzień wcześniej przypomnienie, po pierwszej wizycie krótką wiadomość „jak się czułaś?” z podpowiedzią, które zajęcia wybrać dalej, a po tygodniu propozycję karnetu dopasowaną do tego, na czym faktycznie był. Jeśli nie wróci — po dwóch tygodniach dostaje jedną, ciepłą wiadomość, nie nachalną ofertę. Cała ta sekwencja jest napisana raz, Waszym językiem, i od tej pory pracuje bez końca. Wy widzicie tylko efekt: ludzi, którzy przychodzą i zostają.`,
@@ -1017,6 +1073,7 @@ document.getElementById('sigs').innerHTML=SIGS.map(([c,who,t,d],i)=>`<div class=
 document.getElementById('duszaGrid').innerHTML=DUSZA.map((x,i)=>`<div class="card hoverable" onclick="openIdea('dusza',${i})"><div class="tag clay">${x.tag}</div><h3>${x.t}</h3><p>${x.d}</p><p style="margin-top:10px;font-weight:600;color:var(--clay);font-size:.85rem">Jak to sprzedać? →</p></div>`).join('');
 document.getElementById('futGrid').innerHTML=FUT.map((x,i)=>`<div class="fut hoverable" onclick="openIdea('fut',${i})"><div class="tag">${x.tag}</div><h3>${x.t}</h3><p>${x.d}</p><p style="margin-top:10px;font-weight:600;color:var(--sage-d);font-size:.85rem">Jak to sprzedać? →</p></div>`).join('');
 document.getElementById('onlineGrid').innerHTML=ONLINE.map((x,i)=>`<div class="card hoverable" onclick="openIdea('online',${i})"><div class="tag gold">${x.tag}</div><h3>${x.t}</h3><p>${x.d}</p><p style="margin-top:10px;font-weight:600;color:var(--gold);font-size:.85rem">Jak to sprzedać? →</p></div>`).join('');
+document.getElementById('noweGrid').innerHTML=NOWE.map((x,i)=>`<div class="card hoverable wcard" style="animation-delay:${i*0.06}s;border-top:3px solid var(--gold)" onclick="openIdea('nowe',${i})"><div class="tag gold">${x.tag}</div><h3>${x.t}</h3><p>${x.d}</p><p style="margin-top:10px;font-weight:600;color:var(--gold);font-size:.85rem">Jak to zrobić? →</p></div>`).join('');
 document.getElementById('kursBloki').innerHTML=KURSBLOK.map(([t,d],i)=>`<div class="card"><div class="tag">${String(i+1).padStart(2,'0')}</div><h3>${t}</h3><p>${d}</p></div>`).join('');
 document.getElementById('opinie').innerHTML=OPINIE.map(o=>`<img src="zdjecia/opinie/${o}" alt="Opinia o Yoga Academy" loading="lazy" style="width:100%;border-radius:14px;border:1px solid var(--line);background:#fff;cursor:zoom-in" onclick="lbOpen(this.src)">`).join('');
 document.getElementById('faq').innerHTML=FAQ.map(([q,a],i)=>`<div class="faq-item"><button class="faq-q" onclick="faqToggle(${i})">${q}<span id="fi${i}">+</span></button><div class="faq-a" id="fa${i}">${a}</div></div>`).join('');
@@ -1041,6 +1098,7 @@ function openIdea(type,i){
   else if(type==='fut'){x=FUT[i];eyebrow='Krok w przyszłość · '+x.tag;accent='var(--lav)';}
   else if(type==='audio'){x=AUDIO[i];eyebrow='🎧 Audio · '+x.tag;accent='var(--rose)';}
   else if(type==='mkt'){x=MKT[i];eyebrow='⚙️ Marketing automatyczny · '+x.tag;accent='var(--lav)';}
+  else if(type==='nowe'){x=NOWE[i];eyebrow='💡 Nowy dział · '+x.tag;accent='var(--sand)';}
   else{x=ONLINE[i];eyebrow='Sprzedaż online · '+x.tag;accent='var(--sand)';}
   mo.innerHTML=`<button class="close" onclick="closeModal()">✕</button>
   <div class="head" style="background:${accent}"><div><div class="tag">${eyebrow}</div><h2>${x.t}</h2></div></div>

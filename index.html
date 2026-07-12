@@ -4,6 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Yoga Academy Poznań — Centrum Świadomego Ruchu</title>
+<meta name="description" content="Szkoła jogi i centrum świadomego ruchu w sercu Poznania. Joga połączona z wiedzą fizjoterapeutyczną — Ashtanga, Vinyasa, Yin, medytacja, Rolfing i kursy nauczycielskie Yoga Alliance.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yoga Academy Poznań">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:title" content="Yoga Academy Poznań — tam, gdzie joga spotyka fizjoterapię, neuronaukę i sztukę">
+<meta property="og:description" content="Kameralna szkoła jogi w centrum Poznania. Ashtanga w autoryzowanej linii Mysore, Rolfing, medytacja i kursy nauczycielskie Yoga Alliance.">
+<meta property="og:url" content="https://yogaacademy.vibeline.art/">
+<meta property="og:image" content="https://yogaacademy.vibeline.art/zdjecia/hero_joga-poznan.jpg">
+<meta property="og:image:alt" content="Yoga Academy Poznań">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Yoga Academy Poznań — Centrum Świadomego Ruchu">
+<meta name="twitter:description" content="Joga połączona z wiedzą fizjoterapeutyczną. Św. Marcin 31/1a, Poznań.">
+<meta name="twitter:image" content="https://yogaacademy.vibeline.art/zdjecia/hero_joga-poznan.jpg">
+<link rel="icon" href="logo_yoga-academy.svg">
 <style>
   :root{
     --bg:#faf8f4; --panel:#ffffff; --ink:#3d3a35; --muted:#8a8275;
@@ -188,6 +202,13 @@
   .fut{background:linear-gradient(150deg,var(--lav),var(--sage-tint));border:1px solid var(--line);border-radius:var(--r);padding:24px}
   .fut h3{font-size:1.12rem;margin:6px 0}
   .fut p{font-size:.9rem;color:var(--muted)}
+  /* FAQ akordeon */
+  .faq-item{border-bottom:1px solid var(--line)}
+  .faq-q{width:100%;background:none;border:none;text-align:left;font-family:var(--serif);font-size:1.12rem;font-weight:600;color:var(--ink);padding:20px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .faq-q:hover{color:var(--sage-d)}
+  .faq-q span{color:var(--sage);font-size:1.5rem;flex:none;font-family:var(--sans)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .45s ease,padding .3s;color:var(--muted);font-size:.98rem}
+  .faq-a.open{max-height:400px;padding-bottom:20px}
   .wcard{animation:cardin .7s ease backwards}
   @keyframes cardin{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
   .modal{animation:modalin .32s cubic-bezier(.2,.9,.3,1.2)}
@@ -265,6 +286,18 @@
     <div class="gallery" id="gallery"></div>
   </div></section>
 
+  <section class="reveal soft"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Opinie</div><h2>Co mówią o nas praktykujący</h2>
+      <p>Prawdziwe opinie naszej społeczności — kliknij, by powiększyć.</p></div>
+    <div class="grid g4" id="opinie"></div>
+  </div></section>
+
+  <section class="reveal"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">FAQ</div><h2>Najczęstsze pytania</h2>
+      <p>Wszystko, co warto wiedzieć, zanim staniesz na macie po raz pierwszy.</p></div>
+    <div id="faq"></div>
+  </div></section>
+
   <section class="reveal"><div class="wrap"><div class="band">
     <h2>Zacznij swoją praktykę</h2>
     <p>Zadzwoń lub napisz — pomożemy dobrać zajęcia i karnet do Twoich potrzeb i możliwości.</p>
@@ -304,6 +337,75 @@
     </div>
     <p style="margin-top:18px;color:var(--muted);font-size:.9rem">Zniżki: emeryci i renciści 10% (karnety), studenci — wejście jednorazowe 40 zł. Nie honorujemy kart firm pośredniczących (Multisport, FitProfit) — stawiamy na kameralną, świadomą praktykę.</p>
   </div></section>
+</div>
+
+<!-- ===== KURSY NAUCZYCIELSKIE ===== -->
+<div class="panel" id="kursy">
+  <header class="hero" style="min-height:62vh">
+    <div class="bgwrap"><img src="zdjecia/stock/stock_studio.jpg" alt=""></div>
+    <div class="wrap">
+      <div class="eyebrow">Yoga Teachers' Academy · akredytacja Yoga Alliance</div>
+      <h1 style="font-size:clamp(2.2rem,5vw,3.8rem)">Zostań certyfikowanym nauczycielem jogi</h1>
+      <p class="lead">Kurs nauczycielski 200h prowadzony przez Mateusza Dekera (KPJAYI Authorized level 2) i Anię Olszewską. Akredytowany przez Yoga Alliance według nowych, podwyższonych standardów.</p>
+      <div class="cta"><a class="btn btn-primary" onclick="tab('kontakt')">Zapytaj o kurs — liczba miejsc ograniczona</a></div>
+    </div>
+  </header>
+
+  <section class="reveal"><div class="wrap">
+    <div class="stats" style="margin-bottom:50px">
+      <div class="stat"><div class="n" data-n="200">0</div><div class="l">godzin nauki</div></div>
+      <div class="stat"><div class="n" data-n="8">0</div><div class="l">zjazdów weekendowych</div></div>
+      <div class="stat"><div class="n" data-n="3">0</div><div class="l">moduły tematyczne</div></div>
+      <div class="stat"><div class="n" data-n="24">0</div><div class="l">miejsc w edycji</div></div>
+    </div>
+    <div class="sec-head"><div class="eyebrow">Teoria i praktyka</div><h2>Trzy filary jogi</h2>
+      <p>Kompleksowe szkolenie rozwijające głęboką wiedzę o jodze i umiejętności potrzebne do nauczania w różnych stylach. Program podzielony na trzy moduły — od pracy z ciałem, przez budowanie siły, po świadomy relaks. W obrębie każdego dzielimy się wiedzą z filozofii, anatomii, metodyki nauczania, pracy z oddechem i medytacji.</p></div>
+    <div class="grid g3">
+      <div class="card"><div class="tag">Moduł 1</div><h3>Elastyczność</h3><p>Solidne podstawy praktyki: kluczowe asany, zasady bezpiecznego wykonywania i dostosowywania ich do potrzeb uczniów. Tu rozwiniesz umiejętność pracy z osobami początkującymi.</p></div>
+      <div class="card"><div class="tag">Moduł 2</div><h3>Siła</h3><p>Praktyka rozwijająca siłę, stabilność i wytrzymałość. Zaawansowane sekwencje i prowadzenie dynamicznych zajęć, które budują pewność siebie u praktykujących.</p></div>
+      <div class="card"><div class="tag">Moduł 3</div><h3>Relaks</h3><p>Joga restoratywna wspierająca regenerację ciała i układu nerwowego. Techniki oddechowe, medytacja i praca z propsami — nauka prowadzenia głębokiego relaksu.</p></div>
+    </div>
+  </div></section>
+
+  <section class="reveal soft"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Program</div><h2>Na czym skupimy się podczas kursu</h2></div>
+    <div class="grid g3" id="kursBloki"></div>
+    <div class="sec-head" style="margin:44px 0 20px"><div class="eyebrow">Umiejętności</div><h2 style="font-size:1.6rem">Co rozwiniesz jako przyszły nauczyciel</h2></div>
+    <div class="grid g2">
+      <div class="val"><div class="dot"></div><p>Wiedzę metodyczną i umiejętności do samodzielnego prowadzenia autorskich zajęć.</p></div>
+      <div class="val"><div class="dot"></div><p>Znajomość anatomii i fizjologii konieczną do bezpiecznego prowadzenia uczniów.</p></div>
+      <div class="val"><div class="dot"></div><p>Szczegółową wiedzę o głównych grupach asan i jej wykorzystanie w nauczaniu.</p></div>
+      <div class="val"><div class="dot"></div><p>Nawyk praktyki własnej — fundament umiejętności dobrego nauczyciela.</p></div>
+      <div class="val"><div class="dot"></div><p>Cztery narzędzia nauczyciela: uważną obserwację, precyzyjną instrukcję, klarowną demonstrację i efektywną asystę.</p></div>
+      <div class="val"><div class="dot"></div><p>Nawyk medytacji oraz umiejętność wplatania oddechu i medytacji w zajęcia.</p></div>
+    </div>
+  </div></section>
+
+  <section class="reveal"><div class="wrap">
+    <div class="grid g2">
+      <div class="card" style="border-top:4px solid var(--gold)">
+        <div class="tag gold">Inwestycja</div>
+        <h3 style="font-size:1.5rem">Kurs Nauczycielski 200h</h3>
+        <div style="font-family:var(--serif);font-size:2.8rem;margin:12px 0;color:var(--gold)">9 500 zł</div>
+        <p style="margin-bottom:10px">Zaliczka rezerwująca miejsce: <b>1 500 zł</b>. Po zaliczce resztę można rozłożyć na raty (min. 1000 zł) — najpóźniej dwa tygodnie przed końcem kursu.</p>
+        <p style="font-size:.88rem">Rezygnacja zgłoszona min. 3 miesiące przed startem — pełny zwrot wpłat. Możliwe przeniesienie miejsca na inną osobę za zgodą organizatora. Faktura VAT — zgłoś przed wpłatą.</p>
+        <a class="btn btn-gold" style="margin-top:16px" onclick="tab('kontakt')">Zapytaj o zapis</a>
+      </div>
+      <div class="card soft">
+        <div class="tag">Najbliższa edycja</div>
+        <h3 style="font-size:1.5rem">26 lutego — 12 września 2027</h3>
+        <p style="margin:10px 0"><b>Nabór otwarty.</b> Liczba miejsc ograniczona (24).</p>
+        <p style="font-size:.9rem;color:var(--muted);line-height:2">Zjazdy stacjonarne: 26–28 lutego · 12–14 marca · 2–4 kwietnia · 23–25 kwietnia · 21–23 maja · 11–13 czerwca · 3–5 września 2027<br>Spotkanie online: 20 marca 2027<br>Egzaminy: 11–12 września 2027</p>
+        <p style="font-size:.86rem;margin-top:12px"><b>Certyfikat</b> otrzymują osoby, które ukończyły kurs i zdały egzaminy z wynikiem min. 80%. Absolwenci mogą zarejestrować się w Yoga Alliance jako <b>RYT</b>.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="reveal"><div class="wrap"><div class="band">
+    <h2>Liczba miejsc ograniczona</h2>
+    <p>Jeśli myślisz o nauczaniu jogi — napisz do nas. Odpowiemy na wszystkie pytania i pomożemy ocenić, czy to właściwy moment.</p>
+    <a class="btn" href="mailto:info@yogaacademy.pl">Napisz: info@yogaacademy.pl</a>
+  </div></div></section>
 </div>
 
 <!-- ===== ZESPOL ===== -->
@@ -467,7 +569,34 @@
 <div class="modal-bg" id="modalBg" onclick="if(event.target===this)closeModal()"><div class="modal" id="modal"></div></div>
 
 <script>
-const NAV=[["start","Start"],["zajecia","Zajęcia"],["zespol","Zespół"],["wiedza","Wiedza"],["ebooki","Ebooki"],["sklep","Sklep"],["mozliwosci","Możliwości"],["kontakt","Kontakt"]];
+const NAV=[["start","Start"],["zajecia","Zajęcia"],["kursy","Kursy nauczycielskie"],["zespol","Zespół"],["wiedza","Wiedza"],["ebooki","Ebooki"],["sklep","Sklep"],["mozliwosci","Możliwości"],["kontakt","Kontakt"]];
+
+const FAQ=[
+ [`Czy muszę rezerwować miejsce na zajęcia?`,`Nie. W Yoga Academy nie prowadzimy rezerwacji ani zapisów na regularne zajęcia — wystarczy, że pojawisz się w szkole 10–15 minut przed rozpoczęciem i od razu możesz dołączyć do wybranej grupy.`],
+ [`Czy muszę od razu kupować karnet?`,`Nie. Możesz zacząć od pojedynczego wejścia (50 zł, studenci 40 zł) i spokojnie sprawdzić, czy to miejsce dla Ciebie. Karnet wykupisz w dowolnym momencie — sprawdź cennik w zakładce Zajęcia.`],
+ [`Co zabrać na pierwsze zajęcia?`,`Wystarczy wygodny strój i butelka wody. Maty i cały sprzęt zapewniamy na miejscu, bez dodatkowych opłat.`],
+ [`Czy zajęcia są bezpieczne przy bólu pleców lub innych problemach?`,`Tak. Łączymy jogę z wiedzą fizjoterapeutyczną — ćwiczenia są dopasowane i bezpieczne. Pamiętaj, by przed zajęciami poinformować osobę prowadzącą o swoich dolegliwościach. W szkole możesz też umówić się na sesję fizjoterapeutyczną (Rolfing).`],
+ [`Czy mogę przyjść sam lub sama?`,`Tak — każdy zaczyna od zera. Nikt nie zostanie sam na zajęciach.`],
+ [`Jak wygląda lekcja dla początkujących?`,`75 minut spokojnej praktyki: rozgrzewka, praca z oddechem i łatwe pozycje. Nauczyciel pokazuje modyfikacje dla każdego ciała.`],
+ [`Ile razy w tygodniu warto przychodzić?`,`Na początku wystarczy 1–2 razy w tygodniu, aby poczuć efekty i komfort w ciele.`],
+ [`Czy joga jest dla mężczyzn?`,`Tak. Nasze zajęcia są dla wszystkich — mężczyzn, kobiet, młodzieży i seniorów.`],
+ [`Czy muszę być rozciągnięty, żeby zacząć?`,`Nie. Joga w Yoga Academy jest dla każdego — nauczyciele pokażą modyfikacje pozycji dopasowane do Twoich możliwości. Elastyczność jest skutkiem praktyki, nie warunkiem wstępnym.`],
+];
+
+const OPINIE=["opinia_13.40.04.png","opinia_13.40.32.png","opinia_13.40.42.png","opinia_13.40.58.png","opinia_13.41.06.png","opinia_13.41.21.png","opinia_13.41.43.png"];
+
+const KURSMOD=[
+ [`Filar 1 · Elastyczność`,`Solidne podstawy praktyki: kluczowe asany, zasady ich bezpiecznego wykonywania i sposoby dostosowywania do indywidualnych potrzeb uczniów. Tu rozwiniesz umiejętność pracy z osobami początkującymi.`],
+ [`Filar 2 · Siła`,`Praktyka średniozaawansowana rozwijająca siłę, stabilność i wytrzymałość. Poznasz zaawansowane sekwencje i nauczysz się prowadzić dynamiczne zajęcia budujące pewność siebie u praktykujących.`],
+ [`Filar 3 · Relaks`,`Joga restoratywna wspierająca regenerację ciała i układu nerwowego. Spokojne sekwencje, techniki oddechowe, medytacja i praca z propsami — nauka prowadzenia głębokiego relaksu.`],
+];
+const KURSBLOK=[
+ [`Asany`,`Prawidłowe ustawienie ciała zgodne z budową anatomiczną, z uwzględnieniem indywidualnych predyspozycji i ograniczeń. Nauka układania zajęć na różnych poziomach i budowania praktyki autorskiej.`],
+ [`Anatomia i fizjologia`,`Budowa układu ruchu (anatomia opisowa), zakresy działania stawów i mięśni (anatomia funkcjonalna), szczegółowo układ oddechowy oraz podstawy funkcjonowania układu nerwowego.`],
+ [`Filozofia i etyka`,`Historia myśli indyjskiej jako podstawa do pracy z tekstami klasycznymi (Jogasutry, Bhagavad Gita, Hatha Joga Pradipika) i koncepcjami współczesnymi. Etyka relacji nauczyciel–uczeń, podstawy filozofii buddyjskiej.`],
+ [`Pranajama, medytacja, Ajurweda`,`Praktyka i nauka podstawowych technik oddechowych, techniki medytacyjne z różnych tradycji oraz koncepcje wywodzące się z Ajurwedy — tradycyjnej medycyny indyjskiej.`],
+ [`Joga i marketing`,`Jak budować swój wizerunek jako nauczyciel jogi i skutecznie posługiwać się mediami społecznościowymi do osiągania założonych celów.`],
+];
 
 const GALLERY=["hero_joga-poznan.jpg","studio_dsc01268.jpg","hero_group-5.jpg","hero_group-7.jpg","values_group-8.jpg"];
 
@@ -842,6 +971,10 @@ document.getElementById('sigs').innerHTML=SIGS.map(([c,who,t,d],i)=>`<div class=
 document.getElementById('duszaGrid').innerHTML=DUSZA.map((x,i)=>`<div class="card hoverable" onclick="openIdea('dusza',${i})"><div class="tag clay">${x.tag}</div><h3>${x.t}</h3><p>${x.d}</p><p style="margin-top:10px;font-weight:600;color:var(--clay);font-size:.85rem">Jak to sprzedać? →</p></div>`).join('');
 document.getElementById('futGrid').innerHTML=FUT.map((x,i)=>`<div class="fut hoverable" onclick="openIdea('fut',${i})"><div class="tag">${x.tag}</div><h3>${x.t}</h3><p>${x.d}</p><p style="margin-top:10px;font-weight:600;color:var(--sage-d);font-size:.85rem">Jak to sprzedać? →</p></div>`).join('');
 document.getElementById('onlineGrid').innerHTML=ONLINE.map((x,i)=>`<div class="card hoverable" onclick="openIdea('online',${i})"><div class="tag gold">${x.tag}</div><h3>${x.t}</h3><p>${x.d}</p><p style="margin-top:10px;font-weight:600;color:var(--gold);font-size:.85rem">Jak to sprzedać? →</p></div>`).join('');
+document.getElementById('kursBloki').innerHTML=KURSBLOK.map(([t,d],i)=>`<div class="card"><div class="tag">${String(i+1).padStart(2,'0')}</div><h3>${t}</h3><p>${d}</p></div>`).join('');
+document.getElementById('opinie').innerHTML=OPINIE.map(o=>`<img src="zdjecia/opinie/${o}" alt="Opinia o Yoga Academy" loading="lazy" style="width:100%;border-radius:14px;border:1px solid var(--line);background:#fff;cursor:zoom-in" onclick="lbOpen(this.src)">`).join('');
+document.getElementById('faq').innerHTML=FAQ.map(([q,a],i)=>`<div class="faq-item"><button class="faq-q" onclick="faqToggle(${i})">${q}<span id="fi${i}">+</span></button><div class="faq-a" id="fa${i}">${a}</div></div>`).join('');
+function faqToggle(i){const a=document.getElementById('fa'+i),s=document.getElementById('fi'+i);const open=a.classList.toggle('open');s.textContent=open?'–':'+';}
 document.getElementById('mktGrid').innerHTML=MKT.map((x,i)=>`<div class="fut hoverable wcard" style="animation-delay:${i*0.1}s" onclick="openIdea('mkt',${i})"><div class="tag">⚙️ ${x.tag}</div><h3>${x.t}</h3><p>${x.d}</p><p style="margin-top:10px;font-weight:600;color:var(--sage-d);font-size:.85rem">Jak to działa? →</p></div>`).join('');
 document.getElementById('audio').innerHTML=AUDIO.map((x,i)=>`<div class="card hoverable wcard" style="animation-delay:${i*0.12}s" onclick="openIdea('audio',${i})"><div class="tag clay">🎧 ${x.tag}</div><h3>${x.t}</h3><p>${x.d}</p><p style="margin-top:10px;font-weight:600;color:var(--clay);font-size:.85rem">Jak to zrobić i sprzedać? →</p></div>`).join('');
 document.getElementById('steps').innerHTML=STEPS.map(([n,t,d])=>`<div class="step"><div class="n">${n}</div><div><h3>${t}</h3><p>${d}</p></div></div>`).join('');
@@ -894,7 +1027,8 @@ document.querySelectorAll('.stat .n').forEach(el=>ioN.observe(el));
 /* LIGHTBOX galerii */
 const lb=document.createElement('div');lb.className='lb';lb.innerHTML='<img>';document.body.appendChild(lb);
 lb.onclick=()=>lb.classList.remove('open');
-document.getElementById('gallery').addEventListener('click',e=>{if(e.target.tagName==='IMG'){lb.querySelector('img').src=e.target.src;lb.classList.add('open');}});
+function lbOpen(src){lb.querySelector('img').src=src;lb.classList.add('open');}
+document.getElementById('gallery').addEventListener('click',e=>{if(e.target.tagName==='IMG')lbOpen(e.target.src);});
 </script>
 </body>
 </html>
